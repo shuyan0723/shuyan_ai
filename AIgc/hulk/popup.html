@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变背景颜色</title>
+    <style>
+        body {
+            background-image: url('Ux.jpg');  /* 设置背景图为用户指定的 Ux.jpg */
+            background-size: cover;          /* 背景图覆盖整个窗口 */
+            min-width: 200px;                /* 弹出窗口最小宽度 */
+            padding: 15px;                   /* 内容内边距 */
+        }
+        p, button {
+            background-color: rgba(255, 255, 255, 0.8);  /* 内容框半透明（透明度 0.8） */
+            padding: 8px;                     /* 内容内边距 */
+            border-radius: 4px;               /* 圆角 */
+            margin: 8px 0;                    /* 上下边距 */
+        }
+        button {
+            cursor: pointer;                  /* 鼠标悬停显示手型 */
+            width: 100%;                      /* 按钮宽度占满 */
+        }
+    </style>
+</head>
+<body>
+    <p>改变背景颜色</p>
+    <p>点击下方按钮将当前页面背景色变为绿色</p>
+    <button id="changeColorButton">改变背景颜色</button>
+    <script src="popup.js"></script>  <!-- 引入交互逻辑 -->
+</body>
+</html>
