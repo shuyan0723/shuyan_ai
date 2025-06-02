@@ -1,42 +1,54 @@
+/* 全局样式重置：消除所有元素默认的内外边距，并设置盒模型为border-box */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;          /* 重置所有元素的外边距为0 */
+    padding: 0;         /* 重置所有元素的内边距为0 */
+    box-sizing: border-box; /* 盒模型设置为border-box（宽高包含边框和内边距） */
 }
 
+/* 页面主体样式 */
 body {
-    display: flex; /* 弹性布局 pad 手机 布局 flex  */
-    align-items: center;
-    justify-content: center;
-    height: 100vh;/* vh 相对单位 viewport height 一屏高度100vh, 等比例划分*/
-    overflow: hidden;/* 超出隐藏 */
-    /* background-color: green; */
+    display: flex;      /* 开启弹性布局（用于适配移动端/平板等设备） */
+    align-items: center; /* 子元素在垂直方向（纵轴）居中 */
+    justify-content: center; /* 子元素在水平方向（横轴）居中 */
+    height: 100vh;      /* 高度占满整个视口（vh：视口高度单位） */
+    overflow: hidden;   /* 超出视口的内容隐藏（避免滚动条） */
+    /* background-color: green; */ /* 背景色示例（已注释） */
 }
+
+/* 卡片容器样式 */
 .container {
-    display: flex;/* 弹性布局 格式化上下文 */
-    width: 90vw; /* 90% viewport width 视口宽度 */
+    display: flex;      /* 容器内部开启弹性布局 */
+    width: 90vw;        /* 容器宽度占视口宽度的90%（左右留边距） */
 }
+
+/* 基础卡片样式 */
 .qq-panel {
-    height: 80vh;
-    border-radius: 50px;
-    color: #fff;
-    cursor: pointer;
-    margin: 10px;
-    position: relative;
-    flex: 0.5;
-    transition: all 700ms ease-in;/*过渡效果 元素样式改变后 */
+    height: 80vh;       /* 卡片高度占视口高度的80% */
+    border-radius: 50px; /* 卡片圆角（50px大圆角） */
+    color: #fff;        /* 卡片内文字颜色为白色 */
+    cursor: pointer;    /* 鼠标悬停时显示指针样式（提示可点击） */
+    margin: 10px;       /* 卡片间的外边距（上下左右各10px） */
+    position: relative; /* 相对定位（为子元素绝对定位做参考） */
+    flex: 0.5;          /* 弹性布局中初始占比（0.5份，未激活时较窄） */
+    transition: all 700ms ease-in; /* 所有属性变化过渡700ms（缓入效果） */
 }
+
+/* 卡片标题样式 */
 .qq-panel__title {
-    font-size: 24px;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    opacity: 0;
+    font-size: 24px;    /* 标题字体大小24px */
+    position: absolute; /* 绝对定位（相对于父级.qq-panel） */
+    bottom: 20px;       /* 标题距离卡片底部20px */
+    left: 20px;         /* 标题距离卡片左侧20px */
+    opacity: 0;         /* 初始透明度0（未激活时隐藏） */
 }
+
+/* 激活状态的卡片样式（点击后扩展） */
 .qq-panel_active {
-    flex: 5;
+    flex: 5;            /* 弹性布局中激活时占比变为5份（宽度扩展） */
 }
+
+/* 激活状态下的标题样式 */
 .qq-panel_active .qq-panel__title {
-    opacity: 1;
-    transition: opacity 0.3s ease-in 0.4s;
+    opacity: 1;         /* 激活时透明度变为1（显示标题） */
+    transition: opacity 0.3s ease-in 0.4s; /* 透明度过渡：0.3秒缓入，延迟0.4秒（等待卡片扩展完成） */
 }

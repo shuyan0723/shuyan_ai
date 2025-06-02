@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="common.css" />
-    <title>Expanding Cards</title>
+<!DOCTYPE html> <!-- 声明文档类型为 HTML5（必须放在文档最顶部） -->
+<html lang="en"> <!-- 根元素，lang="en" 指定页面主要语言为英语（影响翻译和SEO） -->
+  <head> <!-- 头部元数据区域（不直接显示在页面上） -->
+    <meta charset="UTF-8" /> <!-- 指定字符编码为 UTF-8（支持全球多种语言字符） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 响应式设计关键配置：视口宽度等于设备宽度，初始缩放1:1（适配手机/平板） -->
+    <link rel="stylesheet" href="common.css" /> <!-- 引入外部 CSS 样式文件 common.css（定义页面布局和样式） -->
+    <title>Expanding Cards</title> <!-- 页面标题（显示在浏览器标签栏/收藏夹） -->
   </head>
-  <body>
-    <div class="container">
+  <body> <!-- 页面可见内容的主区域 -->
+    <div class="container"> <!-- 卡片容器（通过 CSS 控制卡片的排列方式） -->
+      <!-- 第1个卡片（初始激活状态） -->
       <div class="qq-panel qq-panel_active" style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
-        <h3 class="qq-panel__title">Explore The World</h3>
+        <h3 class="qq-panel__title">Explore The World</h3> <!-- 卡片标题（通过 CSS 控制显示/隐藏） -->
       </div>
+
+      <!-- 第2-5个卡片（初始未激活状态） -->
       <div class="qq-panel" style="background-image: url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
         <h3 class="qq-panel__title">Wild Forest</h3>
       </div>
@@ -25,6 +28,6 @@
       </div>
 
     </div>
-    <script src="common.js"></script>
+    <script src="common.js"></script> <!-- 引入外部 JavaScript 文件 common.js（处理卡片点击交互逻辑） -->
   </body>
 </html>
