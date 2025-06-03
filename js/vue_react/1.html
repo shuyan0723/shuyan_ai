@@ -1,0 +1,55 @@
+<!DOCTYPE html> <!-- 声明文档类型为 HTML5（必须放在文档最顶部） -->
+<html lang="en"> <!-- 根元素，lang="en" 指定页面主要语言为英语 -->
+<head> <!-- 头部元数据区域（不直接显示在页面上） -->
+    <meta charset="UTF-8" /> <!-- 指定字符编码为 UTF-8（支持多语言字符） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 响应式设计关键配置：适配不同屏幕尺寸 -->
+    <title>原生JS</title> <!-- 页面标题（显示在浏览器标签栏） -->
+    <!-- 引入 Bootstrap 3.3.6 样式（通过 CDN 加速加载，用于美化表格） -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 容器类（Bootstrap 提供，限制内容宽度并居中显示） -->
+    <div class="container">
+        <!-- 表格：id="friends" 用于 JS 定位，class="table table-striped" 是 Bootstrap 表格样式（带条纹） -->
+        <table id="friends" class="table table-striped">
+            <thead> <!-- 表格头部 -->
+                <tr> <!-- 表头行 -->
+                    <th>姓名</th> <!-- 表头列：姓名 -->
+                    <th>家乡</th> <!-- 表头列：家乡 -->
+                </tr>
+            </thead>
+            <tbody> <!-- 表格主体（内容动态生成区域，初始为空） -->
+                
+            </tbody>
+        </table>  
+    </div>
+
+    <script>
+        // 1. 定位 DOM 元素：通过选择器获取表格的 tbody 元素（用于填充动态内容）
+        const oBody = document.querySelector('#friends tbody');
+
+        // 2. 定义数据源：包含朋友信息的 JSON 数组（每个对象有 name 和 hometown 属性）
+        const friends = [
+            {
+                "name": "王子恒",
+                "hometown": "九江"
+            },
+            {
+                "name": "刘红",
+                "hometown": "赣州"
+            },
+        ];
+
+        // 3. 动态生成 HTML 内容：
+        //    - friends.map()：遍历数组，将每个朋友对象转换为 <tr> 字符串（模板字符串语法）
+        //    - .join('')：将 map 生成的字符串数组拼接为完整 HTML 字符串（避免数组默认的逗号分隔）
+        oBody.innerHTML = friends.map(friend => `
+            <tr>
+                <td>${friend.name}</td> <!-- 动态插入姓名 -->
+                <td>${friend.hometown}</td> <!-- 动态插入家乡 -->
+            </tr>
+        `)
+        .join('');
+    </script>
+</body>
+</html>
