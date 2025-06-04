@@ -1,55 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聚焦于业务，而不是底层API</title>
+<!DOCTYPE html> <!-- 声明文档类型为 HTML5（必须放在文档最顶部） -->
+<html lang="en"> <!-- 根元素，lang="en" 指定页面主要语言为英语 -->
+<head> <!-- 头部元数据区域（不直接显示在页面上） -->
+    <meta charset="UTF-8" /> <!-- 指定字符编码为 UTF-8（支持多语言字符） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 响应式设计关键配置：适配不同屏幕尺寸 -->
+    <title>聚焦于业务，而不是底层API</title> <!-- 页面标题（显示在浏览器标签栏） -->
+    <!-- 引入 Bootstrap 3.3.6 样式（通过 CDN 加速加载，用于美化表格和页面布局） -->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Vue 应用的挂载容器（通过 id="app" 与 Vue 实例绑定，所有 Vue 管理的 DOM 需在此容器内） -->
     <div class="container" id="app">
+        <!-- 动态标题：使用 Vue 插值语法 {{ title }} 显示 data 中的 title 数据 -->
         <h1>{{title}}</h1>
+        <!-- 表格：class="table table-striped" 是 Bootstrap 样式（带边框和斑马纹效果） -->
         <table id="friends" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>姓名</th>
-                    <th>家乡</th>
+            <thead> <!-- 表格头部 -->
+                <tr> <!-- 表头行 -->
+                    <th>姓名</th> <!-- 表头列：姓名 -->
+                    <th>家乡</th> <!-- 表头列：家乡 -->
                 </tr>
             </thead>
             <tbody>
+                <!-- Vue 指令 v-for：循环渲染 friends 数组中的每个元素 -->
+                <!-- friend 是数组项的别名，in 后是数据源 friends（来自 Vue 实例的 data） -->
                 <tr v-for="friend in friends">
+                    <!-- 插值语法 {{ friend.name }}：输出当前朋友对象的 name 属性值 -->
                     <td>{{ friend.name }}</td>
+                    <!-- 插值语法 {{ friend.hometown }}：输出当前朋友对象的 hometown 属性值 -->
                     <td>{{ friend.hometown }}</td>
                 </tr>
             </tbody>
         </table>  
     </div>
+
+    <!-- 引入 Vue 3.2.31 全局版本（支持模板编译的完整构建，用于解析 Vue 模板语法） -->
     <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js"></script>
     <script>
-    // html + css 看到页面  尽快出来，css 放在头部 
-    // js 交互的， 可以晚一步 不会去和html + css 争抢时间
-    // js 应该放在页面底部引用
-    // 做一个App 
-    const App = {
-        // 申明数据的业务
-        data() {
-            return {
-                title:'ECUT 未来之星',
-                friends: [
-                    {
-                        "name": "王子恒",
-                        "hometown": "九江"
-                    },
-                    {
-                        "name": "刘红",
-                        "hometown": "赣州"
-                    },
-                ]
+        // 注释：CSS 放在头部优先加载，确保页面结构渲染时立即应用样式；JS 放在底部避免阻塞 HTML 解析
+        
+        // 定义 Vue 应用实例（选项式 API 风格）
+        const App = {
+            // data() 方法返回组件的响应式数据（数据变化时，视图会自动更新）
+            data() {
+                return {
+                    // title：页面标题数据（通过 {{ title }} 渲染到 <h1> 标签）
+                    title: 'ECUT 未来之星',
+                    // friends：朋友信息数组（每个元素是包含 name 和 hometown 的对象）
+                    friends: [
+                        {
+                            "name": "王子恒",
+                            "hometown": "九江"
+                        },
+                        {
+                            "name": "刘红",
+                            "hometown": "赣州"
+                        },
+                    ]
+                }
             }
         }
-    }
-    // 挂载点
-    Vue.createApp(App).mount('#app')
+
+        // 创建 Vue 应用并挂载到 #app 容器（将数据与 DOM 绑定，激活 Vue 的响应式系统）
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>
