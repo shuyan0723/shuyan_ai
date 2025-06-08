@@ -1,76 +1,55 @@
-// 内置的hook 函数 
+// 导入 React 的 useState Hook（用于管理组件状态）
 import { useState } from 'react'
+// 导入样式文件（用于定义组件样式）
 import '../todo.css'
+// 导入子组件：输入表单（TodoForm）和列表渲染（Todos）
 import TodoForm from './TodoForm'
 import Todos from './Todos'
-function TodoList(){
-    //数据驱动的界面
-    //静态页面？
-    //DOM 数组 -> map -》 join('') -> innerHTML 底层API 编程
-    //缺点 低效，面向API
-    //面向业务 懂业务
-    //数据  -> 变化 ->数据状态 -> 自动刷新页面 -> **数据****驱动**界面
-    //数组，第一项是数据变量，第二项函数 执行，并传入新的todos
-    //页面会自动更新
-    //挂载点 tbody
-    //{todos.map}
-    // setTodos  DOM 及动态更新
-    // 响应式界面开发 
-    // hi 数据状态 setHi 修改数据状态的方法
-    // es6 解构赋值
-    // const h1=useState('haha')[0];
-    const[h1,setHi]=useState('haha');
-    const [title,SetTitle] = useState('Todo list')
-    const [todos,setTodos]=  useState([
+
+// 定义主组件 TodoList
+function TodoList() {
+    // 使用 useState 定义三个状态：
+    // 1. h1：测试用状态（初始值 'haha'），用于演示状态更新
+    // 2. title：页面标题状态（初始值 'Todo list'）
+    // 3. todos：待办事项数组状态（初始包含一个待办项：{id:1, text:'吃饭', completed:false}）
+    const [h1, setHi] = useState('haha');
+    const [title, SetTitle] = useState('Todo list')
+    const [todos, setTodos] = useState([
         {
-            id:1,
-            text:'吃饭',
-            completed:false
+            id: 1,
+            text: '吃水饺',
+            completed: false
         }
     ])
 
-
-    const handleAdd=(text)=>{
+    // 定义添加待办事项的函数（传递给 TodoForm 组件）
+    const handleAdd = (text) => {
+        // 使用 setTodos 更新 todos 状态：
+        // 展开原数组（...todos），添加新待办项（id 为原数组长度+1，text 为输入内容）
         setTodos([
-            ...todos,{
-                id:todos.length+1,
-                text:text,
-                completed:false
+            ...todos,
+            {
+                id: todos.length + 1,
+                text: text,
+                completed: false
             }
         ])
     }
-    // setTimeout(()=>{
-    //     setTodos([...todos,
-    //         {
-    //          id:2,
-    //          text:'睡觉',
-    //          completed:false
-    //         }
-    //     ])
-    //     // 找到DOM,innerHTML
-    //     // 更新业务 setTitle 
-    //     SetTitle('Todo list 2')
-    //     setHi('奥力给')
-    // },2000)
-    return(
-   <div className="container">
-    <h1 className="title">{title }{h1}</h1>
-    {/* 表单 */}
-    <TodoForm onAdd={handleAdd}/>
-    {/* 列表 */}
-    <Todos todos={todos} />
-    {/* {
-        //当下这个位置
-        //数据为王 界面是被驱动的
-        //数据驱动
-        //数据绑定 data binding
-        //发生改变后 自动的改变
-        todos.map(todo=>(
-            <li>{todo.text}</li>
-        ))
-    } */}
-   </div>
+
+    // 渲染页面结构：
+    // - 包含标题（显示 title 和 h1 状态）
+    // - 嵌入 TodoForm 组件（传递 onAdd 回调用于添加待办）
+    // - 嵌入 Todos 组件（传递 todos 数组用于渲染列表）
+    return (
+        <div className="container">
+            <h1 className="title">{title} {h1}</h1>
+            {/* 表单组件：通过 onAdd 属性传递添加待办的函数 */}
+            <TodoForm onAdd={handleAdd} />
+            {/* 列表组件：通过 todos 属性传递待办数据 */}
+            <Todos todos={todos} />
+        </div>
     )
 }
 
+// 导出主组件，作为页面入口
 export default TodoList;

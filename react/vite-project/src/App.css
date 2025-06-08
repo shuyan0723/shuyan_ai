@@ -1,42 +1,52 @@
+/* 根容器样式 */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 1280px;       /* 容器最大宽度为1280px（限制内容过宽） */
+  margin: 0 auto;          /* 上下边距0，左右自动居中 */
+  padding: 2rem;           /* 内边距为2个根元素字体大小（响应式内边距） */
+  text-align: center;      /* 容器内文本居中对齐 */
 }
 
+/* logo通用样式 */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  height: 6em;             /* logo高度为6个当前字体大小（随字体缩放） */
+  padding: 1.5em;          /* 内边距1.5em（增加点击区域和视觉间距） */
+  will-change: filter;     /* 提示浏览器filter属性会变化（优化渲染性能） */
+  transition: filter 300ms;/* 滤镜效果300ms过渡动画（平滑悬停效果） */
 }
 
+/* logo悬停时的滤镜效果 */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa); /* 添加蓝色阴影（颜色#646cff，透明度0.65） */
+}
+
+/* React logo悬停时的特殊滤镜效果 */
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa); /* 添加青蓝色阴影（React经典颜色） */
+}
+
+/* 定义旋转动画（名称：logo-spin） */
 @keyframes logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg); /* 动画起始状态：旋转0度 */
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* 动画结束状态：旋转360度（完整一圈） */
   }
 }
 
+/* 媒体查询：当用户未启用减少动画时 */
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  a:nth-of-type(2) .logo {  /* 匹配第二个a标签内的logo */
+    animation: logo-spin infinite 20s linear; /* 应用旋转动画：无限循环，20秒完成一次，匀速 */
   }
 }
 
+/* 卡片组件样式（通用容器类） */
 .card {
-  padding: 2em;
+  padding: 2em;            /* 内边距2em（用于内容与边框的间距） */
 }
 
+/* "阅读文档"提示文字样式 */
 .read-the-docs {
-  color: #888;
+  color: #888;             /* 灰色文字（#888，降低视觉优先级） */
 }
