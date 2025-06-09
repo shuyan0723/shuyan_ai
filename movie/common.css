@@ -1,0 +1,29 @@
+main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;/*wrap: 换行*/
+}
+.movie{
+    width: 300px;
+    margin: 1rem;
+    position: relative;
+}
+.movie img {    
+    width: 100%;
+}
+
+.overview{
+    background-color: #fff;
+    padding: 2rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+     transform: translateY(101%);/*向上移动*/
+     overflow-y: hidden;/*超出部分显示滚动条*/
+     transition: transform 0.3s ease-in;/*过渡效果*/
+}
+.main:hover .overview{
+    transform: translateY(0);/*向上移动*/
+}
