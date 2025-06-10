@@ -1,0 +1,33 @@
+<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
+<html lang="en"> <!-- 定义HTML根元素，语言为英语 -->
+<head> <!-- 头部信息容器 -->
+  <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8（支持中文等多语言） -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式布局关键配置：视口宽度等于设备宽度，初始缩放1:1 -->
+  <title>Flex 弹性布局</title> <!-- 页面标题 -->
+  <style> 
+    * {
+      padding: 0; /* 重置所有元素的内边距为0 */
+      margin: 0; /* 重置所有元素的外边距为0 */
+    }
+    .container {
+      display: flex; /* 启用Flex弹性布局（核心属性） */
+      width: 600px; /* 容器宽度固定为600px */
+      height: 300px; /* 容器高度固定为300px */
+    }
+    .left {
+      flex: 1 2 500px; /* flex属性简写：flex-grow:1（扩展比例）, flex-shrink:2（收缩比例）, flex-basis:500px（基准宽度） */
+      background-color: red; /* 背景色为红色 */
+    }
+    .right {
+      flex: 2 1 400px; /* flex属性简写：flex-grow:2（扩展比例）, flex-shrink:1（收缩比例）, flex-basis:400px（基准宽度） */
+      background-color: blue; /* 背景色为蓝色 */
+    }
+  </style>
+</head>
+<body> <!-- 页面主体内容 -->
+  <div class="container"> <!-- Flex容器 -->
+    <div class="left"></div> <!-- 左子元素（红色块） -->
+    <div class="right"></div> <!-- 右子元素（蓝色块） -->
+  </div>
+</body>
+</html>

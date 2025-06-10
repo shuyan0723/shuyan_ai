@@ -1,29 +1,37 @@
+/* 主内容区样式 */
 main{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;/*wrap: 换行*/
-}
-.movie{
-    width: 300px;
-    margin: 1rem;
-    position: relative;
-}
-.movie img {    
-    width: 100%;
+    display: flex;          /* 启用弹性布局，子元素（电影卡片）按行排列 */
+    justify-content: center;/* 子元素水平居中对齐 */
+    flex-wrap: wrap;        /* 子元素空间不足时自动换行（wrap: 换行） */
 }
 
-.overview{
-    background-color: #fff;
-    padding: 2rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    min-height: 100%;
-     transform: translateY(101%);/*向上移动*/
-     overflow-y: hidden;/*超出部分显示滚动条*/
-     transition: transform 0.3s ease-in;/*过渡效果*/
+/* 电影卡片容器样式 */
+.movie{
+    width: 300px;           /* 卡片固定宽度300px */
+    margin: 1rem;           /* 卡片四周外边距1rem（约16px） */
+    position: relative;     /* 相对定位，为子元素.overview的绝对定位提供参考 */
 }
-.main:hover .overview{
-    transform: translateY(0);/*向上移动*/
+
+/* 电影海报图片样式 */
+.movie img {    
+    width: 100%;            /* 图片宽度占满父容器（.movie） */
+}
+
+/* 电影简介区域样式 */
+.overview{
+    background-color: #fff; /* 简介背景色为白色 */
+    padding: 2rem;          /* 内边距2rem（约32px） */
+    position: absolute;     /* 绝对定位，相对于父元素.movie */
+    left: 0;                /* 左边缘与父容器左边缘对齐 */
+    right: 0;               /* 右边缘与父容器右边缘对齐 */
+    bottom: 0;              /* 下边缘与父容器下边缘对齐 */
+    min-height: 100%;       /* 最小高度为父容器高度的100%（覆盖卡片内容） */
+    transform: translateY(101%); /* 初始位置向下移动101%高度（隐藏在卡片下方） */
+    overflow-y: hidden;     /* 垂直方向内容超出时隐藏（原注释"显示滚动条"与属性矛盾，实际hidden为隐藏） */
+    transition: transform 0.3s ease-in; /* 定义transform属性的过渡动画（0.3秒，缓入效果） */
+}
+
+/* 鼠标悬停时显示简介（潜在问题：选择器可能错误） */
+.main:hover .overview{      /* 实际应为main:hover .overview（主内容区悬停）或.movie:hover .overview（卡片悬停） */
+    transform: translateY(0); /* 向上移动0%（回到父容器底部，显示简介） */
 }
