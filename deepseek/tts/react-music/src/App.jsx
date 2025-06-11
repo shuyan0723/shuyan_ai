@@ -7,9 +7,9 @@ import './App.css'
 // 定义App组件
 function App() {
   // 火山引擎TTS配置：API令牌、应用ID和集群ID（需替换为实际有效凭证）
-  const TOKEN = '4rwpJNSPLp4_LDIIoimOVgONWC4H8tFn';
-  const APP_ID='4578890435';
-  const CLUSTER_ID='volcano_tts'
+  // const TOKEN = '4rwpJNSPLp4_LDIIoimOVgONWC4H8tFn';
+  // const APP_ID='4578890435';
+  // const CLUSTER_ID='volcano_tts'
 
   // 定义prompt状态，用于存储用户输入的文本内容（初始值为'大家好，我是小魔仙'）
   const [prompt,setPrompt]=useState('大家好，我是小魔仙')
