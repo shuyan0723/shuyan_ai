@@ -7,16 +7,22 @@
 </head>
 <body>
 <script>
-( async function() {
-  const p = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('success')
-    }, 1000)
-  })
-  const res = await p
-  console.log(res)
-  console.log('111111');
-})()
+    // 立即执行的async函数（ES2017特性，用于简化Promise链式调用）
+    (async function() {
+        // 创建一个Promise：1秒后解决并返回'success'
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('success');
+            }, 1000);
+        });
+
+        // await关键字：等待Promise解决（阻塞后续代码，直到p完成）
+        const res = await p;
+        console.log(res); // 输出'success'（约1秒后）
+
+        // 同步代码：在Promise解决后执行
+        console.log('111111'); // 输出'111111'（在'success'之后）
+    })()
 </script>
 </body>
 </html>

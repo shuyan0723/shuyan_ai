@@ -1,43 +1,38 @@
-<!DOCTYPE html> <!-- 声明文档类型为 HTML5，确保浏览器以标准模式渲染 -->
-<html lang="en"> <!-- 定义页面语言为英语（可改为 lang="zh-CN" 适配中文内容） -->
+<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
+<html lang="en"> <!-- 定义页面语言为英语 -->
 <head>
-    <meta charset="UTF-8"> <!-- 设置字符编码为 UTF-8，支持中文、特殊符号等多语言内容 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 移动端适配：视口宽度等于设备宽度，初始缩放比例1:1 -->
-    <title>Document</title> <!-- 页面标题（可自定义为更具体的名称，如"朋友信息列表"） -->
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8（支持多语言） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 移动端适配 -->
+    <title>Document</title> <!-- 页面标题 -->
 </head>
 <body>
-    <ul id="friends"></ul> <!-- 定义无序列表容器，id="friends" 用于通过 JavaScript 定位 -->
+    <ul id="friends"></ul> <!-- 用于展示朋友信息的无序列表容器 -->
     <script>
-        // 定义朋友信息的 JSON 数组（存储数据）
+        // 朋友信息数据（JSON数组）
         const friends = [
-            {name: '娄欢', hometown: '抚州'}, // 对象1：姓名和家乡
-            {name: '王心志', hometown: '上饶'}, // 对象2
-            {name: '刘福洲', hometown: '赣州'}, // 对象3
+            {name: '娄欢', hometown: '抚州'},
+            {name: '王心志', hometown: '上饶'},
+            {name: '刘福洲', hometown: '赣州'},
         ];
 
-        // DOM 操作：通过 id 获取页面中的 ul 元素（后续用于插入内容）
+        // 获取页面中的ul元素（通过id定位）
         const ul = document.getElementById('friends');
 
-        // 被注释的传统 for 循环方案（用于对比 ES6 方法）
-        // for (let i = 0; i < friends.length; i++) {
-        //     const friend = friends[i];
-        //     ul.innerHTML += `  <!-- 逐次拼接 li 标签到 ul 中（效率较低） -->
-        //     <li>
-        //         ${friend.name} - 
-        //         <i>${friend.hometown}</i>
-        //     </li>
-        //     `;
-        // }
-
-        // ES6 优化方案：使用数组的 map + join 生成 HTML 字符串
+        // 使用ES6的map方法生成HTML字符串（替代传统for循环）
         ul.innerHTML = friends
-            .map(friend => `  <!-- map 遍历数组，将每个朋友对象转换为 li 字符串 -->
+            .map(friend => `  <!-- map遍历数组，每个元素转换为li字符串 -->
                 <li>
-                    ${friend.name} -  <!-- 模板字符串插值：插入朋友姓名 -->
+                    ${friend.name} -  <!-- 插值：朋友姓名 -->
                     <i>${friend.hometown}</i>  <!-- 斜体展示家乡 -->
                 </li>
             `)
-            .join('');  // 将 map 生成的数组（多个 li 字符串）合并为一个完整字符串（避免默认逗号分隔）
+            .join('');  // 将数组中的li字符串合并为完整HTML（避免默认逗号）
+
+        // 传统for循环方案（已注释，用于对比）
+        // for (let i = 0; i < friends.length; i++) {
+        //     const friend = friends[i];
+        //     ul.innerHTML += `<li>${friend.name} - <i>${friend.hometown}</i></li>`;
+        // }
     </script>
 </body>
 </html>
