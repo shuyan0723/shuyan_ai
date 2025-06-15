@@ -1,37 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048 Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>2048小游戏</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5e6d3;
+        }
+
+        .game-container {
+            background-color: #bbada0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .cell {
+            width: 80px;
+            height: 80px;
+            background-color: #cdc1b4;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .score-container {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .game-over {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* 不同数字的背景色 */
+        .cell-2 { background-color: #eee4da; }
+        .cell-4 { background-color: #ede0c8; }
+        .cell-8 { background-color: #f2b179; color: white; }
+        .cell-16 { background-color: #f59563; color: white; }
+        .cell-32 { background-color: #f67c5f; color: white; }
+        .cell-64 { background-color: #f65e3b; color: white; }
+        .cell-128 { background-color: #edcf72; color: white; font-size: 20px; }
+        .cell-256 { background-color: #edcc61; color: white; font-size: 20px; }
+        .cell-512 { background-color: #edc850; color: white; font-size: 20px; }
+        .cell-1024 { background-color: #edc53f; color: white; font-size: 18px; }
+        .cell-2048 { background-color: #edc22e; color: white; font-size: 18px; }
+    </style>
 </head>
 <body>
+    <div class="score-container">分数：<span id="score">0</span></div>
     <div class="game-container">
-        <div class="score-container">0</div>
-        <div class="grid-container">
-            <!-- 16个格子 -->
-            <div class="grid-cell" id="grid-cell-0-0"></div>
-            <div class="grid-cell" id="grid-cell-0-1"></div>
-            <div class="grid-cell" id="grid-cell-0-2"></div>
-            <div class="grid-cell" id="grid-cell-0-3"></div>
-            <div class="grid-cell" id="grid-cell-1-0"></div>
-            <div class="grid-cell" id="grid-cell-1-1"></div>
-            <div class="grid-cell" id="grid-cell-1-2"></div>
-            <div class="grid-cell" id="grid-cell-1-3"></div>
-            <div class="grid-cell" id="grid-cell-2-0"></div>
-            <div class="grid-cell" id="grid-cell-2-1"></div>
-            <div class="grid-cell" id="grid-cell-2-2"></div>
-            <div class="grid-cell" id="grid-cell-2-3"></div>
-            <div class="grid-cell" id="grid-cell-3-0"></div>
-            <div class="grid-cell" id="grid-cell-3-1"></div>
-            <div class="grid-cell" id="grid-cell-3-2"></div>
-            <div class="grid-cell" id="grid-cell-3-3"></div>
-        </div>
-        <div class="controls">
-            <button onclick="restartGame()">Restart</button>
-        </div>
+        <div class="grid" id="grid"></div>
     </div>
-    <script src="script.js"></script>
+    <div class="game-over" id="game-over">
+        <h2>游戏结束！</h2>
+        <p>最终分数：<span id="final-score"></span></p>
+        <button onclick="restartGame()">重新开始</button>
+    </div>
+
+    <script>
+        const gridSize = 4;
+        let grid = [];
+        let score = 0;
+        const gridElement = document.getElementById('grid');
+        const scoreElement = document.getElementById('score');
+        const gameOverElement = document.getElementById('game-over');
+        const finalScoreElement = document.getElementById('final-score');
+
+        // 初始化游戏
+        function initGame() {
+            grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(0));
+            score = 0;
+            scoreElement.textContent = score;
+            gameOverElement.style.display = 'none';
+            generateNewNumber();
+            generateNewNumber();
+            renderGrid();
+        }
+
+        // 生成新数字（2或4）
+        function generateNewNumber() {
+            const emptyCells = [];
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (grid[i][j] === 0) emptyCells.push({ row: i, col: j });
+                }
+            }
+            if (emptyCells.length === 0) return;
+            const { row, col } = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+            grid[row][col] = Math.random() < 0.9 ? 2 : 4;
+        }
+
+        // 渲染网格
+        function renderGrid() {
+            gridElement.innerHTML = '';
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = `cell ${grid[i][j] ? \`cell-\${grid[i][j]}\` : ''}`;
+                    cell.textContent = grid[i][j] || '';
+                    gridElement.appendChild(cell);
+                }
+            }
+        }
+
+        // 处理行/列的合并与移动（向左移动逻辑）
+        function processRow(row) {
+            let merged = [];
+            let prev = null;
+            for (let num of row) {
+                if (num === 0) continue;
+                if (prev === num) {
+                    merged.push(prev * 2);
+                    score += prev * 2;
+                    prev = null;
+                } else {
+                    if (prev !== null) merged.push(prev);
+                    prev = num;
+                }
+            }
+            if (prev !== null) merged.push(prev);
+            while (merged.length < gridSize) merged.push(0);
+            return merged;
+        }
+
+        // 移动网格（方向：up/down/left/right）
+        function move(direction) {
+            let newGrid;
+            let changed = false;
+            switch (direction) {
+                case 'left':
+                    newGrid = grid.map(row => processRow(row));
+                    changed = grid.some((row, i) => row.join(',') !== newGrid[i].join(','));
+                    break;
+                case 'right':
+                    newGrid = grid.map(row => processRow([...row].reverse()).reverse());
+                    changed = grid.some((row, i) => row.join(',') !== newGrid[i].join(','));
+                    break;
+                case 'up':
+                    const transposed = transpose(grid);
+                    const processed = transposed.map(row => processRow(row));
+                    newGrid = transpose(processed);
+                    changed = grid.some((row, i) => row.join(',') !== newGrid[i].join(','));
+                    break;
+                case 'down':
+                    const transposedDown = transpose(grid);
+                    const processedDown = transposedDown.map(row => processRow([...row].reverse()).reverse());
+                    newGrid = transpose(processedDown);
+                    changed = grid.some((row, i) => row.join(',') !== newGrid[i].join(','));
+                    break;
+            }
+            if (changed) {
+                grid = newGrid;
+                generateNewNumber();
+                renderGrid();
+                scoreElement.textContent = score;
+                checkGameOver();
+            }
+        }
+
+        // 转置矩阵（用于上下移动）
+        function transpose(matrix) {
+            return matrix[0].map((_, col) => matrix.map(row => row[col]));
+        }
+
+        // 检查游戏是否结束
+        function checkGameOver() {
+            // 检查是否有空格
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    if (grid[i][j] === 0) return false;
+                }
+            }
+            // 检查是否有相邻可合并
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const current = grid[i][j];
+                    if (j < gridSize - 1 && current === grid[i][j + 1]) return false;
+                    if (i < gridSize - 1 && current === grid[i + 1][j]) return false;
+                }
+            }
+            // 游戏结束
+            gameOverElement.style.display = 'block';
+            finalScoreElement.textContent = score;
+            return true;
+        }
+
+        // 键盘事件监听
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'ArrowLeft': move('left'); break;
+                case 'ArrowRight': move('right'); break;
+                case 'ArrowUp': move('up'); break;
+                case 'ArrowDown': move('down'); break;
+            }
+        });
+
+        // 重新开始游戏
+        function restartGame() {
+            initGame();
+        }
+
+        // 初始化游戏
+        initGame();
+    </script>
 </body>
 </html>
