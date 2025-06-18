@@ -1,51 +1,70 @@
-html {
-  box-sizing: border-box;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: url("http://wes.io/hx9M/oh-la-la.jpg") center no-repeat;
-  background-size: cover;
+/* 全局HTML元素样式 */
+html { 
+  box-sizing: border-box; /* 全局设置盒模型为怪异模式（border-box），width/height包含padding和border */
+  min-height: 100vh; /* 最小高度为视口高度，确保内容撑满屏幕 */
+  display: flex; /* 启用弹性布局，用于内容居中 */
+  flex-direction: column; /* 子元素垂直排列 */
+  justify-content: center; /* 垂直方向居中 */
+  align-items: center; /* 水平方向居中 */
+  text-align: center; /* 文本居中对齐 */
+  background: url("http://wes.io/hx9M/oh-la-la.jpg") center no-repeat; /* 设置背景图（居中不重复） */
+  background-size: cover; /* 背景图覆盖整个容器 */
 }
-* {
-  box-sizing: border-box;
+
+/* 通配符选择器：所有元素继承盒模型设置 */
+* { 
+  box-sizing: border-box; /* 确保所有元素使用怪异盒模型，避免尺寸计算误差 */
 }
-.wrapper {
-  padding: 20px;
-  min-width: 350px;
-  background: rgba(123,255,255,0.95);
-  box-shadow: 0 0 0px 10px rgba(0,0,0,0.1);
+
+/* 主内容容器 */
+.wrapper { 
+  padding: 20px; /* 内边距20px */
+  min-width: 350px; /* 最小宽度350px，防止容器过窄 */
+  background: rgba(123,255,255,0.95); /* 半透明背景（青色，透明度95%） */
+  box-shadow: 0 0 0px 10px rgba(0,0,0,0.1); /* 外阴影（0px偏移，10px扩散，半透明黑色） */
 }
-.wrapper h2 {
-  text-align: center;
-  margin: 0;
-  font-weight: 200;
+
+/* 容器内标题样式 */
+.wrapper h2 { 
+  text-align: center; /* 标题居中 */
+  margin: 0; /* 清除默认外边距 */
+  font-weight: 200; /* 字体粗细（更纤细） */
 }
-.plates {
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  list-style: none;
+
+/* 列表（存放条目）样式 */
+.plates { 
+  margin: 0; /* 清除默认外边距 */
+  padding: 0; /* 清除默认内边距 */
+  text-align: left; /* 列表内容左对齐 */
+  list-style: none; /* 移除列表默认符号 */
 }
-.plates li {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  padding: 10px 0px;
-  display: flex;
+
+/* 列表项样式 */
+.plates li { 
+  border-bottom: 1px solid rgba(0,0,0,0.2); /* 底部边框（浅灰色） */
+  padding: 10px 0px; /* 上下内边距10px，左右0 */
+  display: flex; /* 弹性布局，用于子元素（标签和复选框）排列 */
 }
-.plates label {
-  flex: 1;
-  cursor: pointer;
+
+/* 列表项标签样式（点击区域） */
+.plates label { 
+  flex: 1; /* 占据剩余空间（弹性增长） */
+  cursor: pointer; /* 鼠标悬停显示手型指针 */
 }
-.plates input {
-  display: none;
+
+/* 隐藏默认复选框 */
+.plates input { 
+  display: none; /* 不显示原生复选框 */
 }
-.add-items {
-  margin-top: 20px;
+
+/* 添加条目的输入区域 */
+.add-items { 
+  margin-top: 20px; /* 顶部外边距20px，与列表隔开 */
 }
-.add-items input {
-  padding: 10px;
-  outline: 0;
-  border: 1px solid rgba(0,0,0,0.1);
+
+/* 输入框样式 */
+.add-items input { 
+  padding: 10px; /* 内边距10px */
+  outline: 0; /* 移除聚焦时的默认外边框 */
+  border: 1px solid rgba(0,0,0,0.1); /* 浅灰色边框 */
 }
