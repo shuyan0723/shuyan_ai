@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>游戏调试页面</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+
+    .success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>游戏调试页面</h1>
+
+  <div id="status" class="status info">正在检查游戏状态...</div>
+
+  <div id="controls" style="display: none;">
+    <h2>调试控制</h2>
+    <button onclick="checkGameState()">检查游戏状态</button>
+    <button onclick="testScene()">测试场景显示</button>
+    <button onclick="clearStorage()">清除存档</button>
+    <button onclick="goToGame()">进入游戏</button>
+  </div>
+
+  <div id="debug-info"></div>
+
+  <script>
+    window.onload = () => {
+      const status = document.getElementById('status');
+      const controls = document.getElementById('controls');
+
+      try {
+        // 加载游戏脚本
+        const script = document.createElement('script');
+        script.src = 'js/game.js';
+
+        script.onload = () => {
+          status.textContent = '游戏脚本加载成功！';
+          status.className = 'status success';
+
+          // 等待游戏初始化
+          setTimeout(() => {
+            if (window.gameEngine) {
+              status.textContent = '游戏初始化成功！';
+              status.className = 'status success';
+              controls.style.display = 'block';
+              checkGameState();
+            } else {
+              status.textContent = '游戏初始化失败！';
+              status.className = 'status error';
+            }
+          }, 2000);
+        };
+
+        script.onerror = () => {
+          status.textContent = '游戏脚本加载失败！';
+          status.className = 'status error';
+        };
+
+        document.head.appendChild(script);
+
+      } catch (error) {
+        status.textContent = '加载出错：' + error.message;
+        status.className = 'status error';
+        console.error('Load error:', error);
+      }
+    };
+
+    function checkGameState() {
+      const debugInfo = document.getElementById('debug-info');
+      let info = '<h3>游戏状态信息</h3>';
+
+      if (window.gameEngine) {
+        const state = window.gameEngine.state;
+        info += `
+          <p><strong>游戏引擎：</strong>已初始化</p>
+          <p><strong>当前场景：</strong>${state.currentScene}</p>
+          <p><strong>生命值：</strong>${state.health}</p>
+          <p><strong>信任度：</strong>${state.trust}</p>
+          <p><strong>线索数：</strong>${state.clues}</p>
+          <p><strong>已访问场景：</strong>${state.visitedScenes.size}个</p>
+          <p><strong>选择历史：</strong>${state.choices.length}个</p>
+        `;
+      } else {
+        info += '<p><strong>游戏引擎：</strong>未初始化</p>';
+      }
+
+      debugInfo.innerHTML = info;
+    }
+
+    function testScene() {
+      if (window.gameEngine) {
+        window.gameEngine.sceneManager.showScene('prologue');
+        alert('场景测试完成！');
+      } else {
+        alert('游戏引擎未初始化！');
+      }
+    }
+
+    function clearStorage() {
+      localStorage.removeItem('jinyiwei_save');
+      alert('存档已清除！');
+    }
+
+    function goToGame() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+
+</html>

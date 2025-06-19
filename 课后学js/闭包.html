@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+<body>
+    <script>
+        // function outer(){
+        //     let a=100
+        //     function fn(){
+        //     console.log(a);//里层函数加外层函数的变量捆绑到一起就形成了闭包 
+        //     }
+        //     fn()
+        // }
+        // outer()
+        //  const fun=outer()
+        //  fun() //外层函数使用内部函数的变量
+        //  常见的闭包形式 外部可以访问使用 函数内部的变量
+
+        // 闭包的作用:实现数据的私有化 函数调用，函数调用一次，就++
+        //普通形式，统计函数调用的次数
+        // let i=0
+        // function fun2(){
+        //     i++
+        //     console.log(`函数被调用了${i}次`);
+        // }
+        // fun2()
+        // fun2()
+        // i是全局变量，很容易被修改
+
+        // 闭包形式 统计函数调用的次数
+        let z;
+        function count(){
+            let i=0
+            function fun(){
+                i++
+                console.log(`函数被调用了${i}次`);
+            }
+            return fun;
+        }
+     z= count();//创建闭包
+     z() //使用闭包
+     z()
+     z()
+     z()
+     z=null//不需要闭包了，清理它
+     z()// 无效
+     
+    </script>
+</body>
+</html>
