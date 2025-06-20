@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>游戏测试页面</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+
+    .success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .scene-info {
+      background: #f8f9fa;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>游戏测试页面</h1>
+  <div id="status" class="status info">正在加载...</div>
+
+  <div id="controls" style="display: none;">
+    <h2>测试控制</h2>
+    <button onclick="testGameLoad()">测试游戏加载</button>
+    <button onclick="testSceneDisplay()">测试场景显示</button>
+    <button onclick="testChoiceSystem()">测试选择系统</button>
+    <button onclick="testSaveLoad()">测试存档系统</button>
+    <button onclick="goToGame()">进入游戏</button>
+  </div>
+
+  <div id="test-results"></div>
+
+  <script>
+    window.onload = () => {
+      const status = document.getElementById('status');
+      const controls = document.getElementById('controls');
+
+      try {
+        // 加载游戏脚本
+        const script = document.createElement('script');
+        script.src = 'js/game.js';
+
+        script.onload = () => {
+          status.textContent = '游戏脚本加载成功！';
+          status.className = 'status success';
+
+          // 等待游戏初始化
+          setTimeout(() => {
+            if (window.gameEngine) {
+              status.textContent = '游戏初始化成功！';
+              status.className = 'status success';
+              controls.style.display = 'block';
+              testGameLoad();
+            } else {
+              status.textContent = '游戏初始化失败！';
+              status.className = 'status error';
+            }
+          }, 2000);
+        };
+
+        script.onerror = () => {
+          status.textContent = '游戏脚本加载失败！';
+          status.className = 'status error';
+        };
+
+        document.head.appendChild(script);
+
+      } catch (error) {
+        status.textContent = '加载出错：' + error.message;
+        status.className = 'status error';
+        console.error('Load error:', error);
+      }
+    };
+
+    function testGameLoad() {
+      const results = document.getElementById('test-results');
+      let info = '<h3>游戏加载测试结果</h3>';
+
+      if (window.gameEngine) {
+        const state = window.gameEngine.state;
+        const sceneManager = window.gameEngine.sceneManager;
+
+        info += `
+          <div class="scene-info">
+            <p><strong>✓ 游戏引擎：</strong>已初始化</p>
+            <p><strong>✓ 游戏状态：</strong>正常</p>
+            <p><strong>✓ 场景管理器：</strong>正常</p>
+            <p><strong>✓ 当前场景：</strong>${state.currentScene}</p>
+            <p><strong>✓ 生命值：</strong>${state.health}</p>
+            <p><strong>✓ 信任度：</strong>${state.trust}</p>
+            <p><strong>✓ 线索数：</strong>${state.clues}</p>
+            <p><strong>✓ 场景总数：</strong>${Object.keys(sceneManager.scenes).length}个</p>
+          </div>
+        `;
+      } else {
+        info += '<p><strong>✗ 游戏引擎：</strong>未初始化</p>';
+      }
+
+      results.innerHTML = info;
+    }
+
+    function testSceneDisplay() {
+      const results = document.getElementById('test-results');
+      let info = '<h3>场景显示测试结果</h3>';
+
+      if (window.gameEngine) {
+        try {
+          window.gameEngine.sceneManager.showScene('prologue');
+          info += '<p><strong>✓ 场景显示：</strong>正常</p>';
+
+          const storyText = document.getElementById('story-text');
+          if (storyText && storyText.innerHTML) {
+            info += '<p><strong>✓ 故事文本：</strong>已显示</p>';
+          } else {
+            info += '<p><strong>✗ 故事文本：</strong>未显示</p>';
+          }
+
+          const choices = document.getElementById('choices');
+          if (choices && choices.children.length > 0) {
+            info += `<p><strong>✓ 选择按钮：</strong>${choices.children.length}个</p>`;
+          } else {
+            info += '<p><strong>✗ 选择按钮：</strong>未显示</p>';
+          }
+
+        } catch (error) {
+          info += `<p><strong>✗ 场景显示错误：</strong>${error.message}</p>`;
+        }
+      } else {
+        info += '<p><strong>✗ 游戏引擎：</strong>未初始化</p>';
+      }
+
+      results.innerHTML = info;
+    }
+
+    function testChoiceSystem() {
+      const results = document.getElementById('test-results');
+      let info = '<h3>选择系统测试结果</h3>';
+
+      if (window.gameEngine) {
+        try {
+          const currentScene = window.gameEngine.sceneManager.currentScene;
+          if (currentScene && currentScene.choices) {
+            info += `<p><strong>✓ 当前场景选择：</strong>${currentScene.choices.length}个</p>`;
+
+            currentScene.choices.forEach((choice, index) => {
+              info += `<p><strong>选择${index + 1}：</strong>${choice.text}</p>`;
+            });
+          } else {
+            info += '<p><strong>✗ 当前场景：</strong>无选择</p>';
+          }
+
+        } catch (error) {
+          info += `<p><strong>✗ 选择系统错误：</strong>${error.message}</p>`;
+        }
+      } else {
+        info += '<p><strong>✗ 游戏引擎：</strong>未初始化</p>';
+      }
+
+      results.innerHTML = info;
+    }
+
+    function testSaveLoad() {
+      const results = document.getElementById('test-results');
+      let info = '<h3>存档系统测试结果</h3>';
+
+      if (window.gameEngine) {
+        try {
+          // 测试保存
+          window.gameEngine.saveGame();
+          info += '<p><strong>✓ 保存功能：</strong>正常</p>';
+
+          // 测试加载
+          const saveData = localStorage.getItem('jinyiwei_save');
+          if (saveData) {
+            info += '<p><strong>✓ 存档数据：</strong>已保存</p>';
+          } else {
+            info += '<p><strong>✗ 存档数据：</strong>未保存</p>';
+          }
+
+        } catch (error) {
+          info += `<p><strong>✗ 存档系统错误：</strong>${error.message}</p>`;
+        }
+      } else {
+        info += '<p><strong>✗ 游戏引擎：</strong>未初始化</p>';
+      }
+
+      results.innerHTML = info;
+    }
+
+    function goToGame() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+
+</html>
