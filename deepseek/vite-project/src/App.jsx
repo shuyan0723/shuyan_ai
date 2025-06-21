@@ -25,13 +25,53 @@ function App() {
     setIsValid(true)
    }
   }
-  const update = () => {
+
+  const update = async() => {  //asynchronous异步
+    if(!imgBase64Date) return;
+    const endpoint ='http://api.moonshot.cn/v1/chat/completions';
+  
+  const headers={
+    'Content-Type':'application/json',
+    // 授权码 Bearer 一般都会带 
+    'Authorization':`Bearer ${import.meta.env.VITE_API_KEY}`
   }
-  // return (
+  // 实时反馈给用户
+  setContent('正在生成...')
+  const response = await fetch(
+    endpoint,
+    {
+      method:'POST',
+      headers:headers,// es6中 JSON key value 一样可以省略
+      body:JSON.stringify({
+        model:'moonshot-v1-8k-vision-preview',
+        message:[
+          {
+            role:'user',
+            content:[
+              {
+                type:"image_url",
+                image_url:{
+                  url:imgBase64Date
+                }
+              },
+              {
+                type:'text',
+                text:'请详细描述图片的内容'
+              }
+            ]
+          },
+        ]
+      })
+}
+)
+        // 二进制字节流 json 也是异步的
+        const data = await response.json()
+        setContent(data.choices[0].message.content)
+  }
   return (
     <div className="container">
       <div>
-     <label htmlFor="fileInput">文件:</label>
+     <label htmlFor="fileInput">图片:</label>
      <input 
      type="file" 
      id="fileInput"
@@ -46,7 +86,7 @@ function App() {
     }
      </div>
      <div>
-      content
+     { content}
       </div>
     </div>
     </div>
