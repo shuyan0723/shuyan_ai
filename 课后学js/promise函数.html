@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('1');//同步任务
+        console.log('2');//同步任务
+        setTimeout(()=>{
+            console.log('3');//异步任务
+        },1000)
+        console.log('4');//同步任务
+    </script>
+</body>
+</html>
