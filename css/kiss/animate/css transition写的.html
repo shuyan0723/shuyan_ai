@@ -1,0 +1,40 @@
+<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
+<html lang="en"> <!-- 定义HTML根元素，语言为英语 -->
+<head>
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8，支持中文等多语言 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 适配移动端视图，宽度等于设备宽度，初始缩放1:1 -->
+    <title>JS 动画2</title> <!-- 页面标题 -->
+    <style>
+        .box{
+            width: 100px; /* 盒子宽度100px */
+            height: 100px; /* 盒子高度100px */
+            position: relative; /* 相对定位，用于配合left属性移动 */
+            left: 0; /* 初始左偏移0（相对于父元素） */
+            top:0; /* 初始上偏移0 */
+            background-color: red; /* 背景色为红色 */
+            transition: left 2s ease-out; /* 关键：定义left属性的过渡动画，持续2秒，缓动函数为ease-out（结束时变慢） */
+        }
+        .box.active{
+            left: 300px; /* 当添加active类时，左偏移变为300px，触发transition动画 */
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div> <!-- 动画目标元素，初始无active类 -->
+    <script>
+        // 监听DOM内容加载完成事件（此时HTML解析完成，但可能未完全渲染）
+        document.addEventListener('DOMContentLoaded',function(){ 
+            // setTimeout延迟执行回调（即使延迟0ms，也会作为宏任务放入事件队列）
+            // 目的：等待浏览器完成页面渲染（渲染优先级高于宏任务）
+            setTimeout(()=>{
+                // 查询.box元素并添加active类，触发CSS transition动画
+                document.querySelector('.box').classList.add('active');
+            },0)   
+        })
+        // 注释掉的代码：延迟1秒触发动画（可对比0ms和1000ms的效果差异）
+        // setTimeout(()=>{
+        //     document.querySelector('.box').classList.add('active');
+        // },1000);
+    </script>
+</body>
+</html>

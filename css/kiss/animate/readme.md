@@ -1,12 +1,14 @@
 # 动画
 从url 输入要页面渲染
-- teansition 过渡
+- transition 过渡
 - transform  变换
 - animation  关键帧动画
 - js 
  - dom 对象
  - 频繁修改dom 节点的style 属性
- - requestAnimationFrame
+`requestAnimationFrame` 是浏览器提供的JavaScript API，用于请求在下一次屏幕重绘前执行动画回调函数，
+                        确保动画与屏幕刷新率同步，提升流畅度并优化性能。
+        
    请求 Animation 动起来 帧 
    dom 动画和屏幕的刷帧率一致
    + 递归
