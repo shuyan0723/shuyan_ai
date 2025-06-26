@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>index.html</title>
 </head>
 <body>
     <h1>流式输出</h1>
@@ -13,11 +13,11 @@
         // html5 事件流 给他支持SSE 的地址
         // SSE Server Sent Events 服务器端推送事件
         const source = new EventSource('/sse');
-        
+
         source.onmessage=function(event){
             // console.log(event.data);
             const message=document.getElementById('message');
-            message.innerHTML += event.data;
+            message.innerHTML += event.data+'<br>';
         }
     </script>
 </body>

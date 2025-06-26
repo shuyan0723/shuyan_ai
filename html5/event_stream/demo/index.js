@@ -25,7 +25,8 @@ app.get('/sse', (req, res) => {
     'Cache-Control': 'no-cache',// 禁止前端使用缓存 
     'Connection': 'keep-alive',// 保持连接
   })
-  res.flushHeaders();
+  res.flushHeaders();//是一个关键的响应头控制方法，
+  // 其核心作用是 立即将已设置的响应头发送给客户端 。
   setInterval(() => {
     const message = `Current Time is ${new Date().toLocaleTimeString()}`
     // server push
