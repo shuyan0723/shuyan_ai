@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        // bind() 不会调用函数 但是会改变函数内部this的指向
+        const obj={
+            age:18
+        }
+        function fn(){
+            console.log(this);
+        }
+        // bind 不会调用函数
+        // 能改变this指向
+        // 返回值是个函数 , 但是这个函数里面的this是更改过的
+      const fun=  fn.bind(obj)
+    //   console.log(fun);
+      fun()
+
+      // 因此当我们只是想改变this指向，并且不想调用这个函数的时候，可以使用bind
+      // 比如改变定时器内部的this指向
+
+      // 需求，有一个按钮，点击里面禁用，2秒钟之后开启
+    const btn=document.querySelector('button')
+    btn.addEventListener('click',function(){
+        // 禁用按钮
+        this.disabled=true // 用this 代替 btn1
+         window.setTimeout(function(){
+            // 在这个普通函数里面，我们要this由原来的window改为原来的btn
+        this.disabled=false
+        }.bind(this),2000)
+    })
+    </script>
+</body>
+</html>
