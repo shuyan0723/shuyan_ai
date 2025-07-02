@@ -26,15 +26,16 @@
         document.addEventListener('DOMContentLoaded',function(){ 
             // setTimeout延迟执行回调（即使延迟0ms，也会作为宏任务放入事件队列）
             // 目的：等待浏览器完成页面渲染（渲染优先级高于宏任务）
-            setTimeout(()=>{
-                // 查询.box元素并添加active类，触发CSS transition动画
-                document.querySelector('.box').classList.add('active');
-            },0)   
-        })
+        //     setTimeout(()=>{
+        //         // 查询.box元素并添加active类，触发CSS transition动画
+        //         document.querySelector('.box').classList.add('active');
+        //     },0)   
+        // })
         // 注释掉的代码：延迟1秒触发动画（可对比0ms和1000ms的效果差异）
-        // setTimeout(()=>{
-        //     document.querySelector('.box').classList.add('active');
-        // },1000);
+        setTimeout(()=>{
+            document.querySelector('.box').classList.add('active');
+        },1000);
+    })
     </script>
 </body>
 </html>
