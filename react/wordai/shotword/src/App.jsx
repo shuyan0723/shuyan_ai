@@ -58,9 +58,10 @@ function App() {
     setWord(replyData.represent_word);
     setSentence(replyData.example_sentence);
 
-    const audioUrl=await generateAudio(reply.example_sentence);
+    const audioUrl=await generateAudio(replyData.example_sentence);
+    setAudio(audioUrl);
   }
-  
+
   return (
     <div className="container">
       {/* 自定义组件 子组件
