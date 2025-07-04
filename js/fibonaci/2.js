@@ -14,3 +14,4 @@ function memoizeFib(){
 // 可以在外部访问
 const fib=memoizeFib();
 console.log(fib(1000));
+// console.log(memoizeFib());
