@@ -18,7 +18,7 @@ function App() {
   // 例句
   const [sentence, setSentence] = useState('')
   // 解释
-  const [explaination, setExplaination] = useState([]);
+  const [explainations, setExplainations] = useState([]);
   const [expReply, setExpReply] = useState([]);
   // 英文声音
   const [audio, setAudio] = useState('');
@@ -78,7 +78,7 @@ function App() {
               <div className="expand">
                 <img src={imgPreview} alt="preview"/>
                 {
-                  explaination.map((explaination,index)=>(
+                  explainations.map((explaination,index)=>(
                     <div key={index} className='explanation'>
                       {explaination}
                     </div>
