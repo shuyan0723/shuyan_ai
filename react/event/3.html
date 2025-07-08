@@ -29,7 +29,8 @@
 // })
 document.getElementById('myList').addEventListener('click', 
 function(event) {
-    console.log(event.target.innerText);
+    console.log(event.target.innerText); // 事件冒泡
+    // 事件冒泡  事件捕获
 })
 document.getElementById('btn').addEventListener('click', function(event) {
     // 动态添加节点 
@@ -39,11 +40,9 @@ document.getElementById('btn').addEventListener('click', function(event) {
     )
     newLi.addEventListener('click',function(){
         console.log('hahaha');
-        
     })
-    document.getElementById('myList').appendChild(
-        newLi
-    )
+    document.getElementById('myList').appendChild( newLi) // 添加新节点到列表末尾
+    // 事件冒泡  事件捕获
 })
 </script>
 </body>

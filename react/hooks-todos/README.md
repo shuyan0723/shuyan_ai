@@ -29,3 +29,33 @@
          移动端 宽高不定的 rem (html font-size ) vw/vh(viewport), em 相对单位
          使用相对单位，可以在所以设备上适配
          em 相对于自身的font-size 等比例
+
+    - props  组件通信
+           - 传递状态
+           - 传递自定义事件
+           - 直接解构
+              const {
+                todos,// 任务
+                onAddTodo,// 添加
+                onRemoveTodo,
+                onToggleTodo
+              }=props 单独结构
+            
+    - 数据绑定
+      - 变量 修改值
+      - 数据状态
+          - Data binding **数据**绑定 jsx 就是静态的
+          {} 数据绑定 
+          - 数据和界面状态的统一
+               - 界面由数据驱动的 
+               - 数据和界面状态的一致性
+          - 响应式的  
+
+    - vue 和react区别
+        - vue 好入门，api 文档好用
+        - react 倾向于原生JS  入门难
+           - hooks ?  
+    - <input v-model="text" />  vue 双向绑定
+      <input value={text} onoChange={()=>setText(text);}>
+      react 坚持 单向绑定
+      
