@@ -6,7 +6,7 @@
     <title>事件委托</title>
 </head>
 <body>
-    <ul id="mylist">
+    <ul id="myList">
         <li>item1</li>
         <li>item2</li>
         <li>item3</li>
@@ -15,7 +15,7 @@
     <script>
         // 点击li item?
         // 一次性给所以li注册事件？
-        const lis=document.querySelectorAll('ul#mylist li');
+        const lis=document.querySelectorAll('ul#myList li');
         // lis.addEventListener('click',function(event){
         //     console.log(event.target,'////');
         // },false)
@@ -35,7 +35,6 @@
         // 委托给父元素，react 性能优化到极致，#root 挂载点
         document.getElementById('myList').addEventListener('click',function(event){
             console.log(event.target.innerText);
-            
         },false)
     </script>
 </body>
