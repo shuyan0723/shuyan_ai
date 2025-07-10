@@ -7,24 +7,26 @@
 </head>
 <body>
     <script>
+         //先执行微任务，再执行宏任务
         //异步任务
         // fetch 网络请求 then
         // es6 的  promise  异步变同步的解决方案
         // 实例化是需要的参数 传入一个函数，立即执行
         const p= new Promise((resolve)=>{// 同步
-            console.log('333');//立即执行
+            console.log('3');//立即执行
+            
             setTimeout(()=>{// 定时器的注册
-            console.log('2222');
+            console.log('2');
             resolve()// 异步
         },10)
         })
         // promise 实例 prototype 上有一个then方法
         // console.log(p);
         p.then(()=>{// 异步
-            console.log('4444');// 异步
+            console.log('4');// 异步
         })
         // then 
-        console.log('1111')
+        console.log('1')
     </script>
 </body>
 </html>
