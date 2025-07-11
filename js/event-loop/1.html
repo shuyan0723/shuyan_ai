@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event loop</title>
+</head>
+<body>
+    <script>
+    // 一个script就是宏任务的开始
+    // 同步任务
+    // js 调用栈
+    // CPU计算  
+    // 异步任务 耗时性 任务放到某个地方？
+    // 单线程 
+    console.log('脚本开始');
+setTimeout(() => {
+  console.log('setTimeout');
+  Promise.resolve().then(() => console.log('setTimeout中的微任务'));
+}, 0);
+
+new Promise(resolve => {  // promise 同步任务
+  console.log('Promise构造器');
+  resolve();
+}).then(() => {           // promise.then.resolve 异步任务
+  console.log('Promise微任务');
+  return Promise.resolve('链式Promise');
+}).then(console.log);
+
+console.log('脚本结束');
+// 脚本开始
+// 1.html:23 Promise构造器
+// 1.html:30 脚本结束
+// 1.html:26 Promise微任务
+// 链式Promise
+// 1.html:18 setTimeout
+// 1.html:19 setTimeout中的微任务
+//   console.log('script start');
+//   // 异步任务，宏任务 任务队列
+//   setTimeout(()=>{
+//     console.log('setTimeout'); 
+//   },0)
+//   // then 异步 微任务
+//   Promise.resolve().then(()=>{
+//     console.log('promise');
+//   })// 执行完渲染
+//   console.log('script end');
+//   
+    </script>
+</body>
+</html>
