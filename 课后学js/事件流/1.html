@@ -34,6 +34,10 @@ fa.document,addEventListener('click',function(e){
 })
 son.document,addEventListener('click',function(e){
    alert('我是儿子')
+   // 组织流动传播
+   e.stopPropagation()
+   // 组织默认行为
+   e.preventDefault()
 })
 
     </script>
