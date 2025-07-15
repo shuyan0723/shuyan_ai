@@ -28,7 +28,7 @@ sendFlower: function(girl) {
 }
 
 const xm = {
-xq: 30,
+xq: 30,// 心情
 name: '小美',
 room: '408',
 receiveFlower: function(sender) {
