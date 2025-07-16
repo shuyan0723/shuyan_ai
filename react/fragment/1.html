@@ -6,19 +6,19 @@
     <title>文档碎片</title>
 </head>
 <body>
-    <ul id="list">
-  
-    </ul>
+   <div id="list">  
+
+   </div>
     <script>
      const items=[
       {
         id:1,
-        name:'钟文城',
+        total:'钟文城',
         content:'内容1'
       },
       {
         id:2,
-        name:'赖泽阳',
+        total:'赖泽阳',
         content:'内容2'
       }
      ]
@@ -30,8 +30,8 @@
         const wrapper=document.createElement('div');
         const title=document.createElement('h3');
         const desc=document.createElement('p');
-        title.textContent=items.title;
-        desc.textContent=items.desc;
+        title.textContent=items.total;
+        desc.textContent=items.content;
         wrapper.appendChild(title);
         wrapper.appendChild(desc);
         fragment.appendChild(wrapper);
