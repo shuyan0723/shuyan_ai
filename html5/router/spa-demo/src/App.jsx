@@ -14,7 +14,6 @@ import About from './pages/About'
 function App() {
   return (
     <>
-    
     <Router>
        <nav>
         <ul>

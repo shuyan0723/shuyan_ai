@@ -24,8 +24,7 @@
         class Storage{
             static instance
             constructor(){
-                console.log(this,'~~~');
-                
+                console.log(this,'~~~');      
             }
             // 静态方法
             static getInstance(){
@@ -43,11 +42,9 @@
             }
             getItem(key){
                  return localStorage.getItem(key);
-
             }
             setItem(key,value){
              localStorage.setItem(key,value);
-
             }
         }
         // 单例 性能好 
