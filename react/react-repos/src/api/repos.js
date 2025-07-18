@@ -7,9 +7,9 @@ const BASE_URL = "https://api.github.com"; // 基础地址
 // 返回promise 现代
 // api 模块 应用之外 搞外交
 export const getRepos = (username) => {
-  return axios.get(`${BASE_URL}/users/${username}/repos`);
+  return axios.get(`${BASE_URL}/users/${username}/repos`);
 };
 
-export const getRepoDetail = (username, repoName) => {
-  return axios.get(`${BASE_URL}/repos/${username}/${repoName}`);
+export const getRepoDetail = async (username, repoName) => {
+  return await axios.get(`${BASE_URL}/repos/${username}/${repoName}`);
 };
