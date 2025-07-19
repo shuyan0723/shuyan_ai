@@ -19,9 +19,10 @@ return(
  <Suspense fallback={<Loading />}>
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/users/:id/repos" element={<RepoList />} />
+    <Route path="/users/:id" element={<RepoList />} />
     <Route path="/users/:id/repos/:repoId" element={<RepoDetail />} />
     <Route path="*" element={<Navigate to="/users/shunwuyu/repos" />} />
+    {/* <Route path="*" element={<NotFound />} /> */}
   </Routes>
  </Suspense>
 );
