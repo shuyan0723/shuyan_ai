@@ -1,34 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// 1.定义组件
+// const Button=()=>{
+//   // 业务组件逻辑
+//   return (
+//     <button>按钮</button>
+//   )
+// }
 
+function App() {
+  // 1. 调用useState添加一个状态变量
+  // count 状态变量
+  // setCount 修改状态变量的函数
+  const [count,setCount]=useState(10)
+  // let [count,setCount]=useState(10)
+  // 2. 点击事件回调
+  const handleClick=()=>{
+    // setCount(count+1)
+    // count++
+    // console.log(count);
+    setCount(count+1)
+  }
+  // 作用：1.用传入的新值修改count
+  // 2.重新使用新的count渲染UI
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    // <div className='App'>
+    //   {/* 2.使用组件 */}
+    //   {/* 自闭和 */}
+    //   <Button />
+    //   {/* 成对标签 */}
+    //   <Button>按钮</Button>
+    // </div>
+  
+    <div>
+         <button onClick={handleClick}>{count}</button>
+    </div>
   )
 }
 
