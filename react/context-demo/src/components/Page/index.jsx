@@ -4,10 +4,10 @@ import { useTheme } from '../../hooks/useTheme';
 const Page =()=>{
     const theme=useTheme();
     return (
-        <>
-        {theme}
+        <div className='{theme}'>
+          {theme}
         <Child />
-        </>
+        </div>
     )
 }
 
