@@ -17,10 +17,6 @@ const Todos=()=>{
     // 数据流管理
     // 父组件持有管理数据 props 传递数据 子组件通过props 自定义函数
     // 通知父组件 
-
-
-  
-     
     return (
         <div className='app'>
             {/* 自定义事件 */}
