@@ -21,21 +21,51 @@
 
 
 //子传父 核心思路：在子组件中调用父组件的函数并传递参数
+// 使用状态提升实现兄弟组件通信 子传父，父传另外一个子
+// function Son(){
+//   const sonMsg='this is son msg'
+//   return (
+//     <div>
+//       this is son
+//       <button>sendMsg</button>
+//     </div>
+//   )
+// }
+// function App(){
+//   return(
+//     <div>
+//       this is App
+//       <Son/>
+//     </div>
+//   )
+// }
+// export default App
 
-function Son(){
-  const sonMsg='this is son msg'
+function A(){
+  const name= 'A name';
   return (
     <div>
-      this is son
-      <button>sendMsg</button>
+        this is A
+    </div>
+  )
+}
+
+function B(){
+  return (
+    <div>
+        this is B
     </div>
   )
 }
 function App(){
-  return(
+  const getAName=(name)=>{
+  console.log(name);
+  
+  }
+  return (
     <div>
-      this is App
-      <Son/>
+       <A />
+       <B />
     </div>
   )
 }
