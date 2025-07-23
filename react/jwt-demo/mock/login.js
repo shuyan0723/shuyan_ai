@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 // 安全性 编码的时候加密
 // 解码的时候用于解密
+// 加盐 
 const secret = '!@#$%^&*()_+';
 // login 模块 mock 
 export default [
@@ -27,18 +28,27 @@ export default [
             },secret,{
                 expiresIn: 86400
             })
-            console.log(token)
+            console.log(token,'-------')
             return {
                 token,
-                username,
-                password
-            },
-            {
+               data:{
+                id:"001",
+                username:'admin'
+
+               }
+            }
+            
+        }
+    },
+    {
                 url:'/api/user',
                 method:'get',
                 // timeout:2000,
                 response:(req,res)=>{
-                    const token=req.header["authorization"];
+                    // 用户端 token headers
+                    const token=req.header["authorization"].split(' ')[1];
+                    console.log(token);
+                    
                 try{
                        const decode=jwt.decode(token,secret);
                        return {
@@ -56,7 +66,5 @@ export default [
                    
                 }
             }
-        }
 
-    }
 ]
