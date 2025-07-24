@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import 'lib-flexible'  // 移动端适配
 import App from './App.jsx'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <Router>
     <App />
-  </StrictMode>,
+  </Router>,
 )
