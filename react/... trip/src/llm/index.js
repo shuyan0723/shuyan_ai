@@ -50,3 +50,9 @@ export const kimiChat = async (messages) => {
     )
     return res;
 }
+export const generateAvatar = async (text) => {
+    // 设计prompt
+    const prompt=`
+    请你担任一名专业的头像生成器，我的需求是：${text} 要求有个性，有设计感。
+    `
+}
