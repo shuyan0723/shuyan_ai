@@ -12,7 +12,7 @@ const HotListItems=memo((props)=>{
     <div className={styles.hot}>
       <h1>热门推荐</h1>
       {
-        hotList.map((item)=>(
+        hotList?.map((item)=>(
           <div key={item.city} className={styles.item}>
             {item.city}
           </div>

@@ -25,7 +25,7 @@ const useSearchStore = create((set, get) => {
             const res = await getHotList();
             console.log(res);
             set({
-                hotList:res.data
+                hotList:res.data || []
             })
         }
     }

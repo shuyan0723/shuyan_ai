@@ -49,6 +49,33 @@ export default [{
                 },
             ]
 
-            }}}]
+            }}},
+        {
+            url:"/api/detail/:id",
+            method:'get',
+            timeout:1000,
+            response:(req,res)=>{
+                const randomData=Mock.mock({
+                    title:'@ctitle(5,10)',
+                    price:'@integer(60,100)',
+                    desc:'@cparagrph(10-30)',
+                    images:[
+                        {
+                         url:'@image(300x200,@color,#fff,图片)',
+                         alt:'@ctitle(5,10)'
+                        },
+                        {
+                         url:'@image(300x200,@color,#fff,图片)',
+                         alt:'@ctitle(5,10)'
+                        },{
+                         url:'@image(300x200,@color,#fff,图片)',
+                         alt:'@ctitle(5,10)'
+                        },
+                    ]
+                })
+            }
+        }
+        
+        ]
             
  
