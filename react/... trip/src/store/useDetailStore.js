@@ -19,6 +19,7 @@ const useDetailStore = create((set) => ({
     setDetail: async () => {
         set({loading: true})
         const res = await getDetail();
+        console.log(res, '/////')
         set({
             loading: false,
             detail: res.data

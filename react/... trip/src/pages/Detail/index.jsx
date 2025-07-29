@@ -44,7 +44,7 @@ const BottomBar=memo(()=>{
             </div>
              <div className={styles.right}>
                  <div className={styles.cartBtn}>加入购物车</div>
-                 <div className={styles.cartBtn}>立即购买</div>
+                 <div className={styles.buyBtn}>立即购买</div>
             </div>
 
         </div>
@@ -58,7 +58,13 @@ const Detail = () => {
     }, [])
     // ✅ 正确位置：组件顶层作用域
     useTitle(detail?.title || '默认标题');
-    if (loading) return <Skeleton />
+    {loading ? (
+        <Skeleton />
+    ) : (
+        <Swiper>
+            { /* 图片渲染逻辑 */ }
+        </Swiper>
+    )}
     return (
         <>
         <nav className={styles.nav}>
@@ -72,7 +78,8 @@ const Detail = () => {
                     (detail?.images || []).length > 0 ? (
                         (detail.images).map((item,index)=>(
                             <Swiper.Item key={index}>
-                                <Image lazyload src={item.url} />
+                                <Image src={item.url}
+                                width="100%" height="auto"  />
                             </Swiper.Item>
                         ))
                     ) : (
