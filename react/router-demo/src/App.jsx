@@ -24,10 +24,8 @@ function App() {
          <Route path="/products" element={<Products />}  >
           {/* 二级路由 */}
           <Route path=":productId" element={<ProductDetails />} />
-          <Route path="new" element={<NewProduct />} />
-            
+          <Route path="new" element={<NewProduct />} />           
             </Route>
-
        </Routes>
       </Router>
 

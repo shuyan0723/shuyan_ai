@@ -54,10 +54,8 @@
     
     const observer= new IntersectionObserver(function(changes){
         // 变化的
-        // console.log(changes);
-        
-        //  console.log(element);
-        
+        // console.log(changes);       
+        //  console.log(element);      
         changes.forEach(function(element){
             console.log(element,element.target);
             if(element.intersectionRatio>0&& element.intersectionRatio<=1){
