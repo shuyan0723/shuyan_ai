@@ -169,6 +169,33 @@ Readme.md 很重要 方便面试官 了解项目的架构和技术栈
          一个元素按功能逻辑拆分成多个类，和原子一样
          元素的样式就可以由这些原子类组合而成
          样式复用的更好，以后几乎可以不用写样式 
+   - 智能生成图片
+          - 产品
+          冰球社群的宠物运动员 智能出图
+          社交属性
+          - 商业价值
+          技术服务 
+          coze 工作流 智能编排AI 流程 编程的一种 
+          - api
+
+    - 设计工作流
+        - 创建工作流 ani_pic
+            上传宠物图片，生成宠物冰球运动员照片
+        - 代码节点
+            参数校验和逻辑功能，返回运行的结果
+        - 图片生成流程
+           - 图片理解插件 计算机视觉
+           - 大模型 特征提取
+         prompt
+             workflow_id=7533138214471958538
+           - token=pat_l6XjeLrzxHVwSt8lF6IVu6A6xe0uBifGlNbgRQUZpIeetZ6QIX5ujSXRnbuhXUps
+           - coze 图片要先上传到coze中
+           uploaderUrl + token + new FormData
+           append(file)
+              拿到file_id
+           -  workflowUrl + workflow_id + token
+             工作流需要的参数 
+         
 - 用户体验优化
      - 搜索建议，防抖+useMemo 性能优化
      - 组件粒度划分 
@@ -177,6 +204,7 @@ Readme.md 很重要 方便面试官 了解项目的架构和技术栈
      - 热门推荐 + 相关商品（产品）
      - SPA
      - 骨架屏 不用让用户等待了 
+     - 文件上传的preview html5 FileReader
 ## 项目遇到过什么问题，怎么解决的
 - chat message 遇到message 覆盖问题 
 - 闭包陷阱问题

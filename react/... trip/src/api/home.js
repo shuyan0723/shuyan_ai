@@ -6,3 +6,15 @@ export const getImages=(page)=>{
      })
 }
 export default getImages
+
+
+
+
+
+
+
+
+
+
+
+
