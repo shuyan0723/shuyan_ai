@@ -10,8 +10,8 @@ function App() {
   const [todos, setTodos] = useState(['吃饭', '睡觉', '打豆豆']); 
   
   // 声明标题状态（初始值为 '杭电俊杰'）
-  // 注意：settitle 是状态更新函数（命名建议首字母大写，如 setTitle，更符合 React 规范）
-  const [title, settitle] = useState('杭电俊杰'); 
+  // 注意：setTitle 是状态更新函数（命名建议首字母大写，如 setTitle，更符合 React 规范）
+  const [title, setTitle] = useState('杭电俊杰'); 
   
   // 副作用：5 秒后更新状态（模拟异步数据变化）
   setTimeout(() => {
@@ -20,7 +20,7 @@ function App() {
     
     // 潜在问题：title 初始状态是字符串，但此处用数组 ['杭电俊杰'] 更新
     // 这会导致 <h1> 渲染时显示数组的字符串形式（如 "杭电俊杰" 可能变为数组的字符串表示）
-    settitle(['杭电俊杰']); 
+    settitle(['杭电']); 
   }, 5000);
 
   // 渲染逻辑：返回 JSX 结构（React 组件的视图部分）
