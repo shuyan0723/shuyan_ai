@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #demo{
+            border: 1px solid red;
+            /* width: 800px;
+            height: 600px; */
+        }
+
+    </style>
+</head>
+<body>
+      <canvas id="demo"></canvas>
+      <script>
+        let canvas=document.getElementById('demo');
+        let ctx=canvas.getContext('2d');
+        // 绘制矩形
+        ctx.fillStyle='red';
+        ctx.fillRect(0,0,300,150);  // 填充矩形 画了个方形
+        ctx.clearRect(20,20,100,50);  // 清除矩形 黑板擦
+    
+         let dis =0;
+         function animation(){
+            // 浏览器的刷帧 频繁执行 1s 60帧
+           requestAnimationFrame(function(){
+             ctx.clearRect(0,0,300,150);
+             ctx.fillStyle=`rgba(${dis++},0,0)`;
+             ctx.fillText(dis++,110,90);
+             ctx.font = "50px Verdana"; //Verdana是微软开发的无衬线字体，以屏幕显示清晰度高、低分辨率下可读性好著称，广泛用于网页和界面设计。
+             animation();
+             if(dis>=255){
+                dis=0;
+             }
+           })
+         }
+         animation();
+
+      </script>
+</body>
+</html>
