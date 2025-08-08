@@ -13,7 +13,6 @@ worker.onmessage=function (e) {
         `
     }
 }
-
 async function handleFile(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
