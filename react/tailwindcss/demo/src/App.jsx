@@ -37,6 +37,42 @@ function App() {
         Premium  Wireless Headphones
         Premium  Wireless Headphones
       </h3>
+      <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+        Noise-cancelling, 30-hour battery life, premium sound quality.
+      </p>
+      <div className='flex items-center mt-2'>
+        <div className='flex'>
+        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+
+            </div>
+             <div class="mt-3 flex items-center justify-between">
+          <span class="text-xl font-bold text-gray-900">$199.99</span>
+          <span class="text-sm text-gray-500 line-through">$249.99</span>
+        </div>
+
+        
+        <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Add to Cart
+        </button>
+
+        <button class="mt-2 w-full text-blue-600 hover:text-blue-800 text-sm font-medium">
+          Quick View
+        </button>
+      </div>
      </div>
     </div>
   )
