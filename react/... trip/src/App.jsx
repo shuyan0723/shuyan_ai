@@ -19,8 +19,8 @@ const Collection = lazy(() => import('@/pages/Collection'));
 const Trip = lazy(() => import('@/pages/Trip'));
 const Account = lazy(() => import('@/pages/Account'));
 const Search = lazy(() => import('@/pages/Search'));
-const Detail = lazy(() => import('@/pages/Detail'));
-const Coze = lazy(() => import('./pages/Coze/index.jsx'));
+const Detail = lazy(() => import('@/pages/Detail/index.jsx'));
+const Coze = lazy(() => import('@/pages/Coze/index.jsx'));
 function App() {
 
   return (

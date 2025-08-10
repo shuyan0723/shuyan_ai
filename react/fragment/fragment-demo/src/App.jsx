@@ -21,9 +21,6 @@ function Demo({items}){
         </Fragment>
       ))
    }
-  
-   
-
 function App() {
      const items=[
       {
