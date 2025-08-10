@@ -18,16 +18,35 @@ function App() {
       {/* mx-auto: 水平居中 */}
       {/* my-8: 垂直外边距为8 */}
       {/* p-4: 内边距为4 */}
+      {/* // 相对定位容器 - 作为子元素的定位基准 */}
       <div className='relative'>
-        <img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.Cps37NJd4QqA_DXXNLkv9gHaKY?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" 
-        className='w-full h-48 object-cover'
+        {/* 产品图片 - 使用外部URL加载 */}
+        <img 
+          src="https://ts1.tc.mm.bing.net/th/id/OIP-C.Cps37NJd4QqA_DXXNLkv9gHaKY?rs=1&pid=ImgDetMain&o=7&rm=3" 
+          alt="产品图片"  // 添加图片描述以提高可访问性
+          className='w-full h-48 object-cover'  // w-full: 宽度100%填满父容器; h-48: 高度固定为48像素; object-cover: 保持图片比例并裁剪超出部分
         />
-         <span className="absolute top-2 left-2 bg-red-100 text-white text-xs font-bold px-2 py-1 rounded">
-
+         {/* // 标签元素 - 通常用于显示产品状态(如热销、新品等) */}
+         <span 
+           className="absolute top-2 left-2 bg-red-100 text-white text-xs font-bold px-2 py-1 rounded" 
+           // absolute: 绝对定位; top-2: 距离顶部2个单位; left-2: 距离左侧2个单位
+           // bg-red-100: 背景色为浅红色; text-white: 文字颜色为白色
+           // text-xs: 文字大小为超小; font-bold: 字体加粗
+           // px-2: 水平内边距为2个单位; py-1: 垂直内边距为1个单位; rounded: 圆角边框
+         >
+           {/* 热销  // 建议添加标签文本，如"热销"、"新品"等 */}
          </span>
-         <button className='absolute top-2 right-2 text-gray-500 hover:text-red-500 transition-colors'>
-          {/* 矢量图，数学形状来画图， 支持无限放大，不会模糊，区别于像素图 */}
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+         {/* // 按钮元素 - 通常用于关闭或收藏功能 */}
+         <button 
+           className='absolute top-2 right-2 text-gray-500 hover:text-red-500 transition-colors' 
+           // absolute: 绝对定位; top-2: 距离顶部2个单位; right-2: 距离右侧2个单位
+           // text-gray-500: 正常状态下文字颜色为灰色
+           // hover:text-red-500: 鼠标悬停时文字颜色变为红色
+           // transition-colors: 颜色变化添加过渡效果，使颜色变化更平滑
+         >
+           {/* 矢量图，数学形状来画图， 支持无限放大，不会模糊，区别于像素图 */}
+           {/* // SVG图标 - 这里使用的是一个内置的图标 */}
+           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
          </button>
