@@ -9,6 +9,7 @@
           - 使用transformer.js 的 端模型
           - 使用tailwindcss 原子css 几乎不需要写样式了
               类名文档语义很好，特别适合AI 生成
+              高效解决适配
          - webworker nlp 任务
               1. 延迟加载大模型
               2. 在现实组件后再实例化 性能好
