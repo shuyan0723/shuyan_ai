@@ -20,13 +20,22 @@
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^4.7.0",
+<<<<<<< HEAD
     "autoprefixer": "^10.4.19",
+=======
+    "autoprefixer": "^10.4.21",
+>>>>>>> c2e03ee166897c43ba1a3fc58b461b2ab0cd7558
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+<<<<<<< HEAD
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
+=======
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+>>>>>>> c2e03ee166897c43ba1a3fc58b461b2ab0cd7558
     "vite": "^7.1.0"
   }
 }
