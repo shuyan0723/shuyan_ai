@@ -9,4 +9,5 @@
 - CSR and SSR
    csr 组件在客户端运行 模板编译，挂载，浏览器(client) SPA
    Next.js 服务器端渲染SSR 组件的编译发生在服务器端，SEO 非常好
-    
+   爬虫爬取的是服务器端返回的html,而csr 只有一个root,所以是两种模式 
+   企业站，SEO，掘金
