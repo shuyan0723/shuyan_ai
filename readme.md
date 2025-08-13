@@ -25,7 +25,6 @@ commit 5d1215bf56195ccf2d2775901a97af841df77e53
 
 git diff 5d1215bf56195ccf2d2775901a97af841df77e53
 可以查看这次提交修改了什么内容
-
 分支
 git branch 查看项目有哪些分支
 master 一般用来保存经过测试的稳定代码
