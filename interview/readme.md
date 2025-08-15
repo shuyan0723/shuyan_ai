@@ -44,7 +44,7 @@
         git checkout -b xxx
         git branch 查看当前分支
         git checkout main 切换到主分支
-        
+
 
 
  - 常用命令
@@ -54,6 +54,10 @@
      git add .提交到暂存区
      git commit -m "提交信息" 提交到本地仓库
      git push origin main  提交到远程仓库
+
+- 场景
+    - 回退 
+    git restore --staged algorithm/readme.md 回退到暂存区
 
 
      
