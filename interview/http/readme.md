@@ -7,6 +7,7 @@
 - 浏览器缓存
 - http 各个版本的特性
 - TCT 和 UDT区别        
+- GET POST 区别
 
 ## 版本特性
 - 讲清楚有哪些版本 
@@ -56,8 +57,17 @@
     App.jsx 不同的文件 
     Login.jsx
     - http 优化， 图片懒加载
-        js/css/img 过多，合并文件  内容压缩
+        js/css/img 过多，合并文件  内容压缩 减少传输的数据
         同一个域名请求并发的上限是6个 
+    - base64 图片 html/css文件里，减少了请求 
+    - 图标字体库 iconfont
+    - 开启压缩
+    - 使用多个域名 静态资源CDN服务器 
+
+   https://p26-juejin-sign.byteimg.com/tos-cn-i-k3u1fbpfcp/f0a13196924747a2b7725022b537cf22~tplv-k3u1fbpfcp-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg57qm57-wX-m6puWNoeWyqQ==:q75.awebp?rk3s=f64ab15b&x-expires=1755937482&x-signature=SaC4mkMhKswtSSet0DuisQKib5k%3D
+    将资源分布在不同子域名下， Domain sharding 域名分片 
+
+    浏览器缓存 强缓存和协商缓存
 
   - HTTP 2.0
        - 并发 多路复用 
@@ -75,9 +85,39 @@
   - HTTP 3.0
         基于QUIC 协议，该用UDP 代替 TCP
           
-      
+  - 页面快速展示 
 
+  ## GET POST 区别
+  - 用途不一样
+     GET 请求获取数据
+     POST 提交数据
+     我在开发中，会结合RestFul 协议 标准开发
+     PATH/PUT 修改 DELTE 删除
+     OPTIONS 预检 HEAD 文件的信息
 
+  - 数据的传输方式
+     GET url params 或 queryString 明文
+     POST 请求体 相对安全
+
+  - 安全性
+     GET 不安全 缓存，
+     POST 相对安全 但是还要启用https 加密传输
+
+  - 数据长度限制
+      GET 受URL 长度限制， 2048个字节 不适合传输大量数据
+      POST 没有长度限制，适合大量数据传输，比如大文件上传
+
+  - 幂等性
+     GET 是 对此执行都一致，不会改变服务器状态
+     POST 非 可能创建新资源或修改
+
+  - 缓存与书签
+     GET 可以被浏览器缓存， 可以收藏为书签
+     POST 不被缓存， 不能收藏为书签   
+
+  - 状态码
+    GET 200
+    POST 201
 
 
 
