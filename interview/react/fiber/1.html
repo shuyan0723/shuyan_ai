@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestAnimationFrame</title>
+    <style>
+        /* 进度条样式定义 */
+        .progress-bar {
+            width: 0px;           /* 初始宽度为0 */
+            height: 200px;        /* 高度为200px */
+            background-color: red; /* 背景颜色为红色 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面标题 -->
+    <h1>requestAnimationFrame</h1>
+    <!-- 说明文本 -->
+    <p>
+        更重要更优先的 用户交互<br/>
+        用于动画<br/>
+        不是一直执行的，1s 执行60次<br/>
+        16.67ms
+    </p>
+    <!-- 进度条元素 -->
+    <div id="bar" class="progress-bar"></div>
+    <!-- 开始按钮 -->
+    <button id="start">开始时间</button>
+
+    <script>
+        // 获取DOM元素
+        const btn = document.getElementById('start');  // 开始按钮
+        const bar = document.getElementById('bar');    // 进度条
+
+        // 全局变量
+        let start = 0;             // 动画开始时间
+        let allInterval = [];      // 存储动画帧ID的数组
+
+        /**
+         * 动画进度函数
+         * 使用requestAnimationFrame递归调用自身，创建平滑动画
+         */
+        const progress = () => {
+            // 触发回流 布局相关
+            // 每次调用将进度条宽度增加1px
+            bar.style.width = bar.offsetWidth + 1 + 'px';
+            // 递归调用，持续更新动画
+            requestAnimationFrame(progress);
+        }
+
+        // 为开始按钮添加点击事件监听器
+        btn.addEventListener('click', () => {
+            // 重置进度条宽度
+            bar.style.width = 0;
+            // 获取当前时间戳
+            let current = Date.now();
+            // 记录动画开始时间
+            start = current;
+            // 启动动画
+            requestAnimationFrame(progress);
+            // 打印存储动画帧ID的数组（目前为空）
+            console.log(allInterval);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Fiber</title>
+    <style>
+        #status{
+            margin: 20px 0;
+        }
+        #progress{
+            width: 100%;
+            height: 20px;
+            border: 1px solid #ccc;
+        }
+        #bar{
+            height: 100%;
+            width: 0%;
+            background-color: purple;
+            transition: width 0.1s;
+        }
+        button{
+            padding:10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>requestIdleCallback</h1>
+    <p>
+        `requestIdleCallback` 是一个浏览器 API,用于在浏览器空闲时执行回调函数,
+        适合处理非紧急任务（低优先级），避免阻塞主线程，提升页面响应性。
+    </p>
+    <div id="controls">
+        <button id="startBtn">开始处理10000个数据项</button>
+        <button id="animateBtn">开始动画</button>
+    </div>
+    <div id="status">准备就绪</div>
+    <div id="progress">
+        <div id="bar" class="progress-bar"></div>
+    </div>
+    <script>
+        const statusEl=document.getElementById('status');
+        const progressBar=document.getElementById('bar');
+        const startBtn=document.getElementById('startBtn');
+        const animateBtn=document.getElementById('animateBtn');
+
+        let dataItems=[];
+        for(let i=0;i<1000000;i++){
+            dataItems.push({
+                id:i,
+                value:Math.random()*1000000
+            });
+        }
+
+        let processItems=0;
+        let isProcessing=false;
+        let startTime;
+
+        // 修复1：修正按钮点击事件逻辑
+        startBtn.addEventListener('click',()=>{
+            if(!isProcessing){
+                isProcessing=true;
+                processItems=0;
+                startTime=performance.now();
+                statusEl.textContent='处理中...';
+                requestIdleCallback(processDataChunk,{
+                    timeout:1000
+                });
+            }
+        })
+
+        // 修复2-5：修正循环条件、函数调用，并添加进度更新
+        function processDataChunk(deadline){
+            // 处理数据
+            while(
+                processItems < dataItems.length
+                && deadline.timeRemaining() > 0
+                && isProcessing  // 修复条件判断
+            ) {
+                // 模拟数据处理
+                const item = dataItems[processItems];
+                item.value = Math.sqrt(item.value);  // 实际处理数据的逻辑
+                processItems++;
+            }
+
+            // 更新进度条
+            const progress = (processItems / dataItems.length) * 100;
+            progressBar.style.width = progress + '%';
+
+            // 检查是否处理完毕
+            if(processItems >= dataItems.length){
+                isProcessing=false;
+                const endTime = performance.now();
+                statusEl.textContent=`处理完成！耗时: ${(endTime - startTime).toFixed(2)}ms`;
+            } else if(isProcessing){
+                // 未处理完，继续请求空闲时间
+                requestIdleCallback(processDataChunk,{
+                    timeout:1000
+                });
+            }
+        }
+    </script>
+</body>
+</html>
