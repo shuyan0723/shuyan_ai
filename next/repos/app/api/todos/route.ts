@@ -2,6 +2,9 @@ import {
     NextResponse     // res 
 } from 'next/server' // api server
 // ts是js的超集
+import {type Todo} from '@/app/types/todo'
+
+
 interface Todo{
     id:number;
     text:string;
@@ -52,4 +55,18 @@ export async function POST(request:Request){
   
 } 
 
+export async function PUT(request:Request){
+    const data=await request.json();// 解析请求体
+   todos=todos.map(todo=>
+    todo.id===data.id?{...todo,completed:data.completed}:todo
+);
+    return NextResponse.json(todos);
 
+}
+// restful 简历
+export async function DELETE(request:Request){
+    const data=await request.json();
+    todos=todos.filter(todo=>todo.id!==data.id);
+    return NextResponse.json(todos);
+    
+}
