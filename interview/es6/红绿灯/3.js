@@ -2,9 +2,7 @@
 function light(color,ms){
     console.log(color);
      return new Promise(res=>setTimeout(res,ms));// 异步
-
 }
-
 function loop(){
   light('red',1000)
        // 控制流程 异步变同步

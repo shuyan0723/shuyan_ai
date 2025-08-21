@@ -5,5 +5,4 @@ export interface Repo{
     html_url:string;
     stargazers_count:number;
     language:string|null;
-
 }

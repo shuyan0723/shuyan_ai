@@ -9,13 +9,11 @@ const UserProfile=()=>{
     useEffect(()=>{
     //  const id=
     console.log(window.location);
-    
     },[])
     return (
      <>
      UserProfile { id }
      </>
-
     )
 }
 
