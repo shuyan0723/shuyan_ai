@@ -11,7 +11,10 @@ http.createServer(function(request, response) {
         // 性能差点
         const html = fs.readFileSync('test.html', 'utf-8');
         response.writeHead(200, {
-            'Content-Type': 'text/html'
+            'Content-Type': 'text/html',
+            'Expires': new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toUTCString(),
+            // 'Cache-Control': 'max-age=3600'
+
         });
         response.end(html)
     }

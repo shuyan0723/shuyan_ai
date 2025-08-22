@@ -15,7 +15,14 @@
    - 发送请求前，根据请求头的express 和 cache-control 判断是否命中强缓存策略。
       https://www.baidu.com/index.js + 请求头
       缓存文件+请求头在一起（文件的属性一样）
-      
+  - 强缓存
+     Expires 过期时间 http 1.0  缺点是用户时间不准
+     响应头cache-control + 文件本地缓存，在过期时间范围内，
+     不用请求，直接用本地缓存内容。http 1.1 升级为cache-control
+
+     - 协商缓存
+         强缓存过期没有命中，这个资源在服务器端也不一定修改了，怎么样对一下
+
 
   Cookie 
   url 背后的 请求行，请求头，请求体
