@@ -13,7 +13,7 @@
       IE 11一下 不支持
 
         <script type="module" src="/src/main.jsx"></script>
-   VITE是一个基于原生ES模块(import 解析,  Webpack, 浏览器很多还不支持模块化es6)
+   VITE是一个基于原生ES模块(import 解析,  Webpack, 浏览器很多还不支持模块化esm)
    通过按需编译实现极速冷启动(快) 与 热更新的新一代前端构建工具。
 
    - 快？

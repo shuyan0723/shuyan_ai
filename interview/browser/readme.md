@@ -22,7 +22,9 @@
           - 渲染线程 dom 树，cssom树，渲染树，Layout 树，图层合并.....
           big map 交给主线程去绘制
           - JS引擎线程 v8 引擎， 单线程 
-
+          - GUI线程与JS线程互斥，如果JS执行
+              时间过长，就会造成页面渲染阻塞
+          - event loop 涉及的线程
 - 进程间的通信
   Browser 进程(CEO) 管理的各个进程
    Browser 进程和外界，和硬件间的通信
