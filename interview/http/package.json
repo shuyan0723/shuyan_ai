@@ -1,0 +1,12 @@
+{
+  "name": "http",
+  "version": "1.0.0",
+  "description": "- OSI 七层协议\r - 基于TCP/TP\r - 三次握手/四次挥手\r - http/https\r - 浏览器缓存\r - http 各个版本的特性\r - TCT 和 UDT区别        \r - GET POST 区别",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
