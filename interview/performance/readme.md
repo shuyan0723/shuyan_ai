@@ -81,3 +81,57 @@ el.style.transform = 'translateY(100px)'
 // 不会触发重排
 el.style.transform = 'translate(100px,100px)'
 ```
+
+## 资源的加载优化
+     - 图片懒加载
+     - 路由懒加载
+        代码文件上，  code spliting 代码分割
+     - 资源预加载
+         未来可能会用到的资源
+        <link rel='prefetch' href='/next-page.js'>
+        dns-prefetch dns 预解析
+        preload 当前页面必须资源，立即加载
+        - script 资源的加载 阻塞的
+            默认没有
+            async  并发 异步加载，不阻塞页面其他资源加载
+            defer 异步加载，但是会阻塞页面其他资源加载，等页面加载完成再执行    
+            module 异步加载，但是会阻塞页面其他资源加载，等页面加载完成再执行，
+            并且会将模块的依赖关系解析出来，提前加载
+        - webp 格式图片
+            图片的优化，显著的减少体积，并质量不受影响
+        - 图标字体库
+        减少http请求数
+
+            
+## JS执行优化
+       - 防抖节流
+       - web worker 处理复杂的计算
+       - requestAnimationFrame 动画优化
+       - requestIdleCallback react fiber 机制
+            schedule 机制
+       
+## 框架层优化
+      - memo,useMemo,useCallback 避免不必要的渲染
+      - shadcn-ui 按需加载组件库
+      - 合理使用key 优化列表渲染
+
+## 缓存策略
+      - 强缓存和协商缓存
+          Expires(客户端时间不准确) / Cache-Control 不发送请求
+          LastModified if-modified-since 时间戳  304
+          ETag if-none-match 
+      - localstorage/sessionStorage/cookie
+## 网络优化
+      - CDN加速
+          静态资源，分流，会缓存文件
+          多路复用 多域名服务器 img1.baidu.com img.baidu.com
+      - Gzip 压缩
+      - HTTP/2 多路复用
+      - DNS 预解析
+
+## 首屏优化
+      - SSR 
+           组件渲染在服务器端已经完成编译，执行，浏览器端直接显示就好
+
+
+
