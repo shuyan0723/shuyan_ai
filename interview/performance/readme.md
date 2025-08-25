@@ -132,6 +132,39 @@ el.style.transform = 'translate(100px,100px)'
 ## 首屏优化
       - SSR 
            组件渲染在服务器端已经完成编译，执行，浏览器端直接显示就好
+      - 骨架屏
+      - http 2.0 server push 首屏数据推送
 
+## 性能测试
+      - chrome 的performance面板
+      可以看到各项性能指标，针对性的优化
+      可以给出各项性能指标，针对性的优化，给出优化建议
 
+      - 减少首屏JS/css 体积 （code spliting）
+      代码分割（Code Splitting）是一种通过将代码分割成多个小块（chunks），
+      并按需动态加载的技术，用于优化应用程序的加载性能，提高用户体验。
+      - 使用transform代替位置调整，预加载相关资源
+      juejin js = (vue + vue-router) + App.vue + Home.vue + Components
+      vue+vue-router 单独拆分 缓存 基本是不会变的
+      App.vue + home.vue + components 业务代码 经常改，单独
+      做了一次升级 
+
+    - lightHouse 性能测试
+         是chrome的一款性能打分插件，会在 性能，无障碍，最佳实践，SEO 打分
+         会给出优化建议，非常细致。
+         - 图片大小优化
+         - 字体库
+         - 渲染屏蔽请求
+
+## 性能的关键指标
+- FCP First ContentFul Paint
+     首内容绘制（FCP First ContentFul ，FCP）是衡量网页加载性能的关键指标，
+     表示页面中最大可见内容元素（如图片，视频或文本块）完全渲染完成的时间。
+
+- LCP Largest Contentful Paint
+     最大内容绘制（Largest Contentful Paint, LCP）是衡量网页加载性能的关键指标，
+     表示页面中最大可见内容元素（如图片、视频或文本块）完全渲染完成的时间。
+     
+
+      首页只加载必要的js，其他组件按需加载
 
