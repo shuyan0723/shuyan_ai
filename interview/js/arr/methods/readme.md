@@ -37,6 +37,14 @@
           flat 扁平化
       - 迭代器 iterable
           keys() values() entries()
+      - join/toString() 拼接
+      - 归约
+          reduce 归约
+          reduceRight 从右往左归约
+      - 静态方法
+          Array.from() 类数组转数组
+          Array.of() 数组转类数组
+          Array.isArray() 是否是数组
       find/findIndex/findLast/findLastIndex
       filter 过滤
       some 有一个满足
