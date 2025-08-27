@@ -10,6 +10,7 @@
 
 - race,any,allSettled 区别
       这一组Promise 上的静态方法,带来了promise 的并行
+
        async await 简单,不需要then的链式调用,优雅的异步变同步,但也不能乱用
        它是串行的.
        如果多个promise值前后有依赖 async/await 有优势,但如果没有呢? promise.all 并发更快
@@ -20,3 +21,4 @@
         Promise.race()	谁快听谁的：哪个 Promise 最先完成（无论 fulfilled 或 rejected），它的结果就决定了 Promise.race() 的最终状态。
         Promise.any()	首个成功即成功：只要有一个 Promise fulfilled，它就立即 fulfilled；只有当所有 Promise 都 rejected 时，它才 rejected（返回 AggregateError）。
         Promise.allSettled()	全部完成才结束：等待所有 Promise 都 settled（fulfilled 或 rejected），然后返回一个包含每个 Promise 结果（含状态和值/原因）的数组。
+        
