@@ -37,5 +37,17 @@
  10
     20 
        30
-          40
-             50
+             
+  通过左旋，  20 提上来， 20,10,30 平衡了
+
+  AVL树 二叉平衡树，叶子结点的层级相差不超过1
+  为了查询的效率而来 BST的优化。        
+
+# prompt 写死了 有什么问题？
+   AI 工程角度
+   es6 的模板字符串
+   PromptTemplate 是AI项目的一个模块
+    Agent 赛道里面 code Agent 既定成功 
+    Cursor Claude Code sub Agents
+    写文档的agent，画界面的agent(Stitch)，原型agent（Figma）
+    写代码的agent 测试agent 上线agent 
