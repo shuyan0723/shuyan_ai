@@ -12,6 +12,6 @@ const dragon:Animal={
 // type AnimalType={
 //     name:string;
 // }
-// type Animal={
+// type AnimalType={
 //     age:number;
 // }

@@ -15,6 +15,10 @@ node --expose-gc 1.js
  node 运行 node --expose-gc 为运行方式
 - weakmap 弱引用 会被回收
 
+
+
+
+
 - Map,Set 需要手动去考虑内存的开销
     WeakMap,WeakSet 弱引用自动实现
     global.gc() 

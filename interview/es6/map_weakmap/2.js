@@ -1,13 +1,13 @@
-global.gc();
+// global.gc();
 console.log(process.memoryUsage());
 
 const wm = new WeakMap();
 let key= new Array(10*1024*1024);
 wm.set(key,1);
-global.gc();
+// global.gc();
 console.log(process.memoryUsage());
 key=null;
-global.gc();
+// global.gc();
 console.log(process.memoryUsage());
 
 
