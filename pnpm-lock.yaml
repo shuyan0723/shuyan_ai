@@ -11,9 +11,15 @@ importers:
       axios:
         specifier: ^1.11.0
         version: 1.11.0
+      dotenv:
+        specifier: ^17.2.1
+        version: 17.2.1
       echarts:
         specifier: ^6.0.0
         version: 6.0.0
+      opai:
+        specifier: ^0.0.2
+        version: 0.0.2
       openai:
         specifier: ^4.104.0
         version: 4.104.0
@@ -195,6 +201,10 @@ packages:
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  dotenv@17.2.1:
+    resolution: {integrity: sha512-kQhDYKZecqnM0fCnzI5eIv5L4cAe/iRI+HqMbO/hbRdTAeXDG+M9FjipUxNfbARuEg4iHIbhnhs78BCHNbSxEQ==}
+    engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -380,6 +390,12 @@ packages:
 
   node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
+
+  opai@0.0.2:
+    resolution: {integrity: sha512-M75fdwy8vjAR++Dx3MRNMXt+jaO5BnIH+3mvxJWsO5RYoVGwRVsMQ4GQCOIRkltUkAoowTFmvhvzO916EkxnBg==}
+
+  opai@2.3.3:
+    resolution: {integrity: sha512-kmySv6lpBgx6x+bNrIAmcQYHSEIE8AYjAHza/k7Qcx7wH5N9z4GS+Xd9M4wsMAw5sHChcjWqJ8Y3pcGb7xLnAA==}
 
   openai@4.104.0:
     resolution: {integrity: sha512-p99EFNsA/yX6UhVO93f5kJsDRLAg+CTA2RBqdHK4RtK8u5IJw32Hyb2dTGKbnnFmnuoBv5r7Z2CURI9sGZpSuA==}
@@ -752,6 +768,8 @@ snapshots:
 
   delayed-stream@1.0.0: {}
 
+  dotenv@17.2.1: {}
+
   dunder-proto@1.0.1:
     dependencies:
       call-bind-apply-helpers: 1.0.2
@@ -908,6 +926,12 @@ snapshots:
       whatwg-url: 5.0.0
 
   node-releases@2.0.19: {}
+
+  opai@0.0.2:
+    dependencies:
+      opai: 2.3.3
+
+  opai@2.3.3: {}
 
   openai@4.104.0:
     dependencies:

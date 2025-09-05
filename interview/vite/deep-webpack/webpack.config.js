@@ -68,7 +68,6 @@ module.exports = {
         }
     },
     optimization: {
-        usedExports: true,// true shaking 注释，没有使用的代码
         splitChunks: {
             minSize: 0,
             cacheGroups: {

@@ -46,3 +46,29 @@
 
 - restful API
 - lib/ 复用的js 模块
+- regexp
+     前端，后端都要会正则
+     /^.+?[]{}$/ test 
+     ^ 开始 $ 结束 ^ 严格匹配整个字符
+     . 都匹配，一个字符
+     ？ 0次或一次
+     + 一次或多次
+     [] 范围 
+     {} 长度
+
+     bcryptjs 是一个纯JavaScript实现的密码哈希库，用于安全地加密和校验密码
+
+     加密js 模块  单向的加密算法（不能被解密）
+     register 加密一次
+     login password 加密一次 
+     比较的是加密后的串是否一样？
+- 状态码
+    - 200 ok
+    - 201 Created
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 403 Forbidden
+    - 404 Not Found
+    - 409 Conflict
+    - 500 Internal Server Error
+    
