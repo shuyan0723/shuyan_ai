@@ -1,0 +1,17 @@
+export const client = new OpenAI({
+    apiKey: 'sk-07IuyNPFdmfHs4qmK7IaEhwSUt8JFZASvW9Wv9QB7iMYLQSP',
+    baseURL: 'https://api.302.ai/v1'
+})
+{
+  "name": "semantic-search",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node main.mjs",
+    "embed": "node embedding.mjs"
+  },
+  "dependencies": {
+    "openai": "^4.104.0",
+    "dotenv": "^17.2.1"
+  }
+}

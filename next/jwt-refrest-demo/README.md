@@ -11,6 +11,16 @@
        mcp
 - ai 搜索
     
+## 双token 
+单token localStorage 长期的，第三方拦截 不安全
+安全 + 无感刷新登录
+双token 
+- accessToken 校验身份 重要 时间有效期变短 以小时为单位
+      过期怎么办？ 
+- refreshToken 刷新 7day 时间长
+      没有过期，refreshToken 发到服务器 / api/auth/refresh 
+     返回新的 accessToken 无感刷新
+- refreshToken 过期后， 去登录
 
 ## 开发流程
 - .env
@@ -64,11 +74,19 @@
      比较的是加密后的串是否一样？
 - 状态码
     - 200 ok
-    - 201 Created
-    - 400 Bad Request
-    - 401 Unauthorized
-    - 403 Forbidden
-    - 404 Not Found
-    - 409 Conflict
-    - 500 Internal Server Error
+    - 201 Created 成功创建
+    - 400 Bad Request 客户端错误
+    - 401 Forbidden 未授权
+    - 404 Not Found 资源不存在
+    - 409 Conflict 冲突
+    - 500 Internal Server Error 服务器错误
     
+    - middleware 的概念
+      中间件 配置一个列表 
+      / dashboard 
+      Middleware 是中间件，用户在请求和响应之间执行预处理逻辑，
+      如日志、认证、数据解析等。
+      - 配置一个需要登录的页面数组
+      - some startWith 
+      - response.next() 放行 
+      - response.redirect() 跳转
