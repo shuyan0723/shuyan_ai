@@ -90,3 +90,6 @@
       - some startWith 
       - response.next() 放行 
       - response.redirect() 跳转
+
+      jose 是Node.js 中用于处理JWT、JWS、
+      JWE 等JOSE标准的库，支持安全的令牌生成与验证
