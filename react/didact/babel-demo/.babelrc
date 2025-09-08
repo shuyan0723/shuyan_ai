@@ -1,0 +1,10 @@
+{
+    "presets": [
+        [
+        "@babel/preset-react",{
+              "pragmas":"Didact.createElement",
+              "pragmaFrag":"Didact.Fragment"  
+        }
+    ]
+  ]
+}
