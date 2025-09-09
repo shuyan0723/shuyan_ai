@@ -41,4 +41,4 @@ function listToTree(list,parentId){
 
 
 const tree=listToTree(sourceList,0)
-console.log(tree);//123
+console.log(tree);
