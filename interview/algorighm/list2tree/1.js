@@ -35,10 +35,10 @@ const sourceList = [
 ];
 
 function listToTree(list,parentId){
-    
+
 }
 
 
 
 const tree=listToTree(sourceList,0)
-console.log(tree)
+console.log(tree);//123
