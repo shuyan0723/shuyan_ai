@@ -27,7 +27,7 @@ export default function ChatInput({
         onChange={handleInputChange}
         placeholder="请问我手机相关问题..."
       />
-      <Button>
+      <Button type="submit">
          <ArrowUp/>
          <span className="sr-only">发送</span>
       </Button>

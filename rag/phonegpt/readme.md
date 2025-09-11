@@ -59,3 +59,27 @@ Puppeteer 是一个 Node.js 库，用于控制无头浏览器（如 Chrome），
 
 ## typescript
 - 组件props 类型定义
+
+## 前端部分的亮点
+- @ai-sdk/react 对chatBot 响应式业务的封装 一行代码完成流式输出
+   useChat hook
+- react-markdown ai响应 markdown是主要的格式
+   # - ![]() 解析
+- tailwindcss 适配
+- react组件划分和ts 的类型约束
+   shadcn 按需加载、定制性强
+- lucide-react 图标库
+- useChat 对hooks的理解 响应式业务的封装，一般函数封装的区别
+
+## 后端亮点
+- ai streamText 流式输出
+- result.toDataStreamResponse() 将 streamText 生成的流式结果转换为一个可被前端消费的 Response 对象，
+  支持以数据流形式传输 AI 输出，实现逐字显示等实时效果。
+- 爬虫脚本
+   - seed 脚本任务
+      npm run dev
+      填充知识库 
+
+## 遇到的问题
+- ai-sdk检索的时候， LLM 给了老版本的代码 调试出了问题， mcp 解决问题
+  

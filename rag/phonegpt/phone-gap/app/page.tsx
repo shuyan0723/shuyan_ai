@@ -4,8 +4,8 @@ import {
   useChat
 } from "@ai-sdk/react"
 // components
-import ChatInput from "@/components/chatInput";
-import ChatOutput from "@/components/chatOutput";
+import ChatInput from "@/components/ChatInput";
+import ChatOutput from "@/components/ChatOutput";
 
 export default function Home() {
   // chat llm 业务 抽离
