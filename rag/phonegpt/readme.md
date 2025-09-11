@@ -77,9 +77,17 @@ Puppeteer 是一个 Node.js 库，用于控制无头浏览器（如 Chrome），
   支持以数据流形式传输 AI 输出，实现逐字显示等实时效果。
 - 爬虫脚本
    - seed 脚本任务
-      npm run dev
+      npm run seed
       填充知识库 
+   - 填充知识库
+   - seed.ts 编写这个脚本
+      ts-node + typescript  可以直接运行
+      先解析成js，再运行。
+- langchain Agent 开发框架
+  coze promptTempate   
 
 ## 遇到的问题
 - ai-sdk检索的时候， LLM 给了老版本的代码 调试出了问题， mcp 解决问题
-  
+- ts-node 编译时不支持esm
+  tsconfig.json ts 配置文件 
+  支持ts-node commonjs 
