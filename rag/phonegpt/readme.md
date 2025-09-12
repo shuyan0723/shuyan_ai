@@ -84,10 +84,32 @@ Puppeteer 是一个 Node.js 库，用于控制无头浏览器（如 Chrome），
       ts-node + typescript  可以直接运行
       先解析成js，再运行。
 - langchain Agent 开发框架
-  coze promptTempate   
+  coze promptTempate  记忆MessageMemory Community    
+- 正则html替换   
+- vercel的AI版图
+  - next.js
+  - AI- sdk
+  - js 的云端运行环境
+  - v0 bolt 
+     ai-sdk/react 流式输出-> prompt -> embedding 
+     网页（wikipidia）-> langchain/communnity+puppeteer(爬取) -> 
+     langchain提供的分块机制（chunks? 段落） -> embedding -> supabase 存储
+  - 向量存储
+CREATE TABLE public.chunks (
+    id uuid NOT NULL DEFAULT gen_random_uuid(),
+    content text null,
+    vector extensions.vector null,
+    url text null,
+    date_updated timestamp without time zone DEFAULT now(),
+    CONSTRAINT chunks_pkey PRIMARY KEY (id)
+  );
 
 ## 遇到的问题
 - ai-sdk检索的时候， LLM 给了老版本的代码 调试出了问题， mcp 解决问题
 - ts-node 编译时不支持esm
   tsconfig.json ts 配置文件 
   支持ts-node commonjs 
+
+- rpc 调用
+  在supabase 数据库中调用函数
+ 
