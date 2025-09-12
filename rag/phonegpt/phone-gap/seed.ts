@@ -81,31 +81,34 @@ const loadData = async (webpages: string[]) => {
     });
 
     for (const url of webpages) {
-        // try {
+        try {
             console.log(`正在爬取: ${url}`);
             const content = await scrapePage(url);
             console.log(`爬取完成: ${url}, 内容长度: ${content.length}`);
             
-           const chunks = await splitter.splitText(content);
+            const chunks = await splitter.splitText(content);
 
-          //  for (let chunk of chunks){
-            const { embedding } = await embed({
-              model: openai.embedding('text-embedding-3-small'),
-              value: chunks[0]
-            })
-            console.log(embedding)
-          //  }
-            const {error} = await supabase.from('chunks').insert({
-              content: chunks[0],
-              vector: embedding,
-              url: url
-            })
-            if(error){
-                console.log(error)
+            for (let chunk of chunks) {
+                const { embedding } = await embed({
+                    model: openai.embedding('text-embedding-3-small'),
+                    value: chunk
+                })
+                console.log(embedding)
+                
+                // 将插入操作移到循环内部，确保能访问到chunk和embedding变量
+                const {error} = await supabase
+                .from('chunks').insert({
+                    content: chunk,
+                    vector: embedding,
+                    url: url
+                })
+                if(error){
+                    console.log(error)
+                }
             }
-        // } catch (error) {
-        //     console.error(`爬取失败: ${url}`, error);
-        // }
+        } catch (error) {
+            console.error(`爬取失败: ${url}`, error);
+        }
     }
 }
 
