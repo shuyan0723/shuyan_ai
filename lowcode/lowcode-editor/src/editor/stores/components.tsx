@@ -29,6 +29,11 @@ export const useComponentsStore = create<State & Actions>(
                     name: '???',
                     props: {},
                     children: [],
+                },{
+                    id: 1,
+                    name: 'Header',
+                    props: {},
+                    children: [],
                 }
             ],
             addComponent: (component, parentId) => set((state) => {
