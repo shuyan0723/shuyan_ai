@@ -6,12 +6,14 @@ export interface MaterialItemProps {
 export function MaterialItem(props: MaterialItemProps) {
   const { name } = props;
   const [_,drag] =useDrag({
-    type: name,// 数据项
+    type: name,
+    // 数据项
     item: {
         type:name
         
     }
   });
+  console.log(drag, '////////////////////////////////')
   return <div
             ref={drag}
             className="

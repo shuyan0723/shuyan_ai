@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import ReactDom from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
-ReactDOM.createRoot(
-  document.getElementById('root')! // 非空断言
+ReactDom.createRoot(
+  document.getElementById('root')!//非空断言
 ).render(
   <DndProvider backend={HTML5Backend}>
     <App />
   </DndProvider>
-);
+)
