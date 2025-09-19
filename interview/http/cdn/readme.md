@@ -19,6 +19,9 @@
 ## 跨域
 - JSONP script 标签 src 可以跨域 只能GET 请求
 - cors 服务器端设置响应头 Access-Control-Allow-Origin 可以跨域。
+- 代理
+- websocket 协议 全双工通信 服务器可以主动向客户端推送数据 客户端也可以主动向服务器发送数据
+ QQ socket 协议 通信 
 
 - 同源策略
 Same-Origin Policy 
@@ -33,3 +36,10 @@ GET bank.com/api/balance bank.com Access-Control-Allo-Origin 没有evil.com 不�
 - 代理
   开发期间的代理 vite 正向代理
    上线代理 nginx 反向代理
+
+## webSocket 协议 跨域
+- 在web 浏览器端的双工通讯协议 
+  WebSocket 是 html5 对象，在web端实现即时通信
+- 在服务器端 ws 支持 webSocket 协议
+- 首次通过 http 协议建立链接 101 switch protocol 转成 ws 通信
+
