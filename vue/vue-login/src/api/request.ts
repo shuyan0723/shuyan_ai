@@ -1,7 +1,7 @@
 import axios, {type AxiosInstance } from 'axios';
 
 const service: AxiosInstance = axios.create({
-  baseURL: '/api',
+  baseURL: '',
   timeout: 5000
 })
 
